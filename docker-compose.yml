@@ -15,7 +15,7 @@ services:
     networks:
       - testuzb
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${PDB_USER}"]
+      test: ["CMD-SHELL", "pg_isready -U ${PDB_USER} -d ${PDB_NAME} -h localhost"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -28,7 +28,7 @@ services:
       - ./migrations:/migrations
     depends_on:
       - postgres-db
-    command: ["-path", "/migrations", "-database", "postgres://${PDB_USER}:${PDB_PASSWORD}@postgres:${PDB_PORT}/${PDB_NAME}?sslmode=disable", "up"]
+    command: ["sh", "-c", "migrate -path /migrations -database postgres://${PDB_USER}:${PDB_PASSWORD}@postgres-db:5432/${PDB_NAME}?sslmode=disable up"]
 
   checkerservice:
     container_name: checkerservice
