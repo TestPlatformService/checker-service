@@ -4,7 +4,7 @@ services:
 
   postgres-db:
     container_name: postgres
-    image: postgres:latest
+    image: postgres:14  # Aniq versiya ko'rsatildi
     environment:
       - POSTGRES_USER=${PDB_USER}
       - POSTGRES_PASSWORD=${PDB_PASSWORD}
@@ -21,7 +21,6 @@ services:
       timeout: 5s
       retries: 5
 
-  
   migrate:
     image: migrate/migrate
     networks:
@@ -29,9 +28,9 @@ services:
     volumes:
       - ./migrations:/migrations
     depends_on:
-      - postgres-db
+      postgres-db:
+        condition: service_healthy  # PostgreSQL tayyor bo'lishini kutish
     command: ["-path", "/migrations", "-database" ,"postgres://${PDB_USER}:${PDB_PASSWORD}@postgres:${PDB_PORT}/${PDB_NAME}?sslmode=disable","up"]
-
 
   checker-service:
     container_name: checker-service
@@ -41,8 +40,10 @@ services:
     networks:
       - testuzb
     depends_on:
-      - postgres-db
-      - migrate
+      postgres-db:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully  # Migratsiya muvaffaqiyatli yakunlanishini kutish
     healthcheck:
       test: ["CMD-SHELL", "grpc_health_probe -addr=:50054"]
       interval: 10s
