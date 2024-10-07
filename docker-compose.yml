@@ -4,7 +4,7 @@ services:
 
   postgres-db:
     container_name: postgres
-    image: postgres:14  # Aniq versiya ko'rsatildi
+    image: postgres:latest  # Aniq versiya ko'rsatildi
     environment:
       - POSTGRES_USER=${PDB_USER}
       - POSTGRES_PASSWORD=${PDB_PASSWORD}
