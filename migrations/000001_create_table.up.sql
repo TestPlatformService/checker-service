@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS submited (
     id UUID PRIMARY KEY,
     code TEXT,
-    user_task_id UUID REFERENCES user_tasks(id) ON DELETE CASCADE,
+    user_task_id UUID ,
     submited_at TIMESTAMP
 );
