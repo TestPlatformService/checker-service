@@ -1,28 +1,29 @@
-version: '3.9'
+version: '3.8'
 
 services:
-
   postgres-db:
     container_name: postgres
     image: postgres:17
     environment:
-      - POSTGRES_USER=${PDB_USER}
-      - POSTGRES_PASSWORD=${PDB_PASSWORD}
-      - POSTGRES_DB=${PDB_NAME}
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-1111}
+      - POSTGRES_DB=${POSTGRES_DB:-testuzb1checker}
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT:-5432}:5432"
     volumes:
       - db:/var/lib/postgresql/data
+      - ./init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
     networks:
       - testuzb
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${PDB_USER}"]
-      interval: 10s
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-testuzb1checker}"]
+      interval: 5s
       timeout: 5s
-      retries: 5
+      retries: 10
 
   migrate:
-    image: migrate/migrate
+    container_name: checker-service-migrate-1
+    image: migrate/migrate:latest
     networks:
       - testuzb
     volumes:
@@ -30,11 +31,13 @@ services:
     depends_on:
       postgres-db:
         condition: service_healthy
-    command: ["-path", "/migrations", "-database", "postgres://${PDB_USER}:${PDB_PASSWORD}@postgres:${PDB_PORT}/${PDB_NAME}?sslmode=disable", "up"]
+    command: ["-path", "/migrations", "-database", "postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-1111}@postgres:${POSTGRES_PORT:-5432}/${POSTGRES_DB:-testuzb1checker}?sslmode=disable", "up"]
 
   checker-service:
     container_name: checker-service
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "50054:50054"
     networks:
@@ -49,10 +52,16 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    environment:
+      - PDB_HOST=postgres
+      - PDB_USER=${POSTGRES_USER:-postgres}
+      - PDB_PASSWORD=${POSTGRES_PASSWORD:-1111}
+      - PDB_NAME=${POSTGRES_DB:-testuzb1checker}
+      - PDB_PORT=${POSTGRES_PORT:-5432}
 
 networks:
   testuzb:
-    external: true
+    name: testuzb
 
 volumes:
   db:
