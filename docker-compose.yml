@@ -1,7 +1,6 @@
 version: '3.9'
 
 services:
-
   postgres-db:
     container_name: postgres
     image: postgres:latest
@@ -21,7 +20,6 @@ services:
       timeout: 5s
       retries: 5
 
-  
   migrate:
     image: migrate/migrate
     networks:
@@ -30,8 +28,7 @@ services:
       - ./migrations:/migrations
     depends_on:
       - postgres-db
-    command: ["-path", "/migrations", "-database" ,"postgres://${PDB_USER}:${PDB_PASSWORD}@postgres:${PDB_PORT}/${PDB_NAME}?sslmode=disable","up"]
-
+    command: ["-path", "/migrations", "-database", "postgres://${PDB_USER}:${PDB_PASSWORD}@postgres:${PDB_PORT}/${PDB_NAME}?sslmode=disable", "up"]
 
   checkerservice:
     container_name: checkerservice
@@ -41,14 +38,15 @@ services:
     networks:
       - testuzb
     depends_on:
-      - postgres-db
-      - migrate
+      postgres-db:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
     healthcheck:
       test: ["CMD-SHELL", "grpc_health_probe -addr=:50054"]
       interval: 10s
       timeout: 5s
       retries: 5
-
 
 networks:
   testuzb:
