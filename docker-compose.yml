@@ -1,13 +1,14 @@
 version: '3.9'
 
 services:
+
   postgres-db:
     container_name: postgres
     image: postgres:latest
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=1111
-      - POSTGRES_DB=testuzb_checker
+      - POSTGRES_USER=${PDB_USER}
+      - POSTGRES_PASSWORD=${PDB_PASSWORD}
+      - POSTGRES_DB=${PDB_NAME}
     ports:
       - "5432:5432"
     volumes:
@@ -15,11 +16,12 @@ services:
     networks:
       - testuzb
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d testuzb_checker -h localhost"]
+      test: ["CMD-SHELL", "pg_isready -U ${PDB_USER}"]
       interval: 10s
       timeout: 5s
       retries: 5
 
+  
   migrate:
     image: migrate/migrate
     networks:
@@ -28,20 +30,19 @@ services:
       - ./migrations:/migrations
     depends_on:
       - postgres-db
-    command: ["sh", "-c", "migrate -path /migrations -database postgres://postgres:1111@postgres-db:5432/testuzb_checker?sslmode=disable up"]
+    command: ["-path", "/migrations", "-database" ,"postgres://${PDB_USER}:${PDB_PASSWORD}@postgres:${PDB_PORT}/${PDB_NAME}?sslmode=disable","up"]
 
-  checkerservice:
-    container_name: checkerservice
+
+  checker-service:
+    container_name: checker-service
     build: .
     ports:
       - "50054:50054"
     networks:
       - testuzb
     depends_on:
-      postgres-db:
-        condition: service_healthy
-      migrate:
-        condition: service_completed_successfully
+      - postgres-db
+      - migrate
     healthcheck:
       test: ["CMD-SHELL", "grpc_health_probe -addr=:50054"]
       interval: 10s
