@@ -27,19 +27,19 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.PORT }}
           script: |
-            # Check if the check_service directory exists
-            if [ -d "check_service" ]; then
+            # Check if the checker-service directory exists
+            if [ -d "checker-service" ]; then
               echo "Repository exists. Pulling latest changes..."
-              cd check_service
+              cd checker-service
               git pull origin main
             else
               echo "Repository does not exist. Cloning repository..."
               git clone git@github.com:TestPlatformService/checker-service.git
-              cd check_service
+              cd checker-service
             fi
 
             # Stop and remove existing Docker containers
-            sudo docker compose down || true
+            sudo docker-compose down || true
 
             # Build and start Docker containers
-            sudo docker compose up -d --build
+            sudo docker-compose up -d --build
