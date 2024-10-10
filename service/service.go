@@ -20,7 +20,7 @@ func NewService(logger *slog.Logger, storage storage.Istorage)*Service{
 	}
 }
 
-func(S *Service) QuestionInfo(id string)(model.QuestionInfo, error){
+func(S *Service) QuestionInfo(id string)(model.QuestionInfo, error) {
 	
 }
 
