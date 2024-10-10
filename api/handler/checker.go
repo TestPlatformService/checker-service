@@ -13,7 +13,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func sendRunRequest(runReq model.RunRequest, Log *slog.Logger) (*model.RunResponse, error) {
+func sendRunRequest(runReq model.ApiRequest, Log *slog.Logger) (*model.RunResponse, error) {
 	// API URL
 	apiURL := "https://capi.robocontest.uz/run"
 
@@ -57,8 +57,22 @@ func (h *Handler) Check(c *gin.Context) {
 		return
 	}
 
+	questionInfo, err := h.Service.QuestionInfo(req.QuestionId)
+	if err != nil{
+		h.Log.Error(fmt.Sprintf("Question ma'lumotlarini olishda xatolik: %v", err))
+		c.JSON(http.StatusBadRequest, gin.H{"Message":"Question ma'lumotlarini olishda xatolik"})
+		return 
+	}
+
 	// API ga request yuborish
-	runResp, err := sendRunRequest(req, h.Log)
+	var apiReq = model.ApiRequest{
+		Code: req.Code,
+		Lang: req.Lang,
+		MemoryLimit: questionInfo.MemoryLimit,
+		TimeLimit: questionInfo.TimeLimit,
+		IO: questionInfo.IO,
+	}
+	runResp, err := sendRunRequest(apiReq, h.Log)
 	if err != nil {
 		h.Log.Error("Robocontest api bilan bog'lanmadi: %v", err)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to send request"})

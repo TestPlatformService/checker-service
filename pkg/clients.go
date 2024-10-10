@@ -15,16 +15,16 @@ type Clients struct{
 	Case question.TestCaseServiceClient
 }
 
-func QuestionServiceClient(cfg config.Config)*Clients{
-	client, err := grpc.NewClient(cfg.QUESTION_SERVICE, grpc.WithTransportCredentials(insecure.NewCredentials()))
+func NewClients(cfg config.Config)*Clients{
+	questionClient, err := grpc.NewClient(cfg.QUESTION_SERVICE, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil{
 		panic(err)
 	}
 
 	return &Clients{
-		Question: question.NewQuestionServiceClient(client),
-		Input: question.NewInputServiceClient(client),
-		Output: question.NewOutputServiceClient(client),
-		Case: question.NewTestCaseServiceClient(client),
+		Question: question.NewQuestionServiceClient(questionClient),
+		Input: question.NewInputServiceClient(questionClient),
+		Output: question.NewOutputServiceClient(questionClient),
+		Case: question.NewTestCaseServiceClient(questionClient),
 	} 
 }

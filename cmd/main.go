@@ -4,6 +4,7 @@ import (
 	"checker/api"
 	"checker/config"
 	"checker/logs"
+	"checker/pkg"
 	"checker/service"
 	"checker/storage"
 	"checker/storage/postgres"
@@ -21,7 +22,8 @@ func main() {
 	defer db.Close()
 
 	storage := storage.NewStoragePro(db, logger)
-	service := service.NewService(logger, storage)
+	client := pkg.NewClients(cfg)
+	service := service.NewService(logger, storage, client)
 
 	router := api.Router(logger, service)
 	log.Println("Checker Service is running on port 50054")
