@@ -11,5 +11,6 @@ type IStorage interface {
 }
 
 type ICheckStorage interface {
-	Submit(context.Context, *pb.SubmitReq) (*pb.SubmitResp, error)
+	// Submit(context.Context, *pb.SubmitReq) (*pb.SubmitResp, error)
+	GetSubmits(context.Context, *pb.GetSubmitsRequest) (*pb.GetSubmitsResponse, error)
 }

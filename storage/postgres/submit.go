@@ -2,15 +2,14 @@ package postgres
 
 import (
 	"checker/logs"
+	"checker/model"
 	"checker/storage/repo"
 	"context"
 	"database/sql"
-	"fmt"
+	"errors"
 	"log/slog"
-	"time"
 
 	pb "checker/genproto/checker"
-	"github.com/google/uuid"
 )
 
 type checkRepo struct {
@@ -25,24 +24,71 @@ func NewCheckRepo(DB *sql.DB) repo.ICheckStorage {
 	}
 }
 
-func (c *checkRepo) Submit(ctx context.Context, req *pb.SubmitReq) (*pb.SubmitResp, error) {
-	submissionID, err := uuid.NewUUID()
+func (c *checkRepo) Submit(ctx context.Context, req *model.Request) (string, error) {
+
+	query := `
+				INSERT INTO submitted (
+					question_id, user_id, question_name, status, lang, compiled_time, compiled_memory, code, user_task_id)
+				VALUES 
+					($1, $2, $3, $4, $5, $6, $7, $8, $9)`
+
+	_, err := c.DB.ExecContext(ctx, query, 
+		req.QuestionId,
+		req.UserId,
+		req.QuestionName,
+		req.Status,
+		req.Language,
+		req.CompiledTime,
+		req.CompiledMemory,
+		req.Code,
+		req.UserTaskId)
 	if err != nil {
-		c.Log.Error("Failed to generate UUID for submission", slog.String("error", err.Error()))
-		return nil, fmt.Errorf("failed to generate UUID: %w", err)
+		c.Log.Error(err.Error())
+		return "", err
 	}
 
-	query := `INSERT INTO submited 
-	(id, code, user_task_id, submited_at) 
-	VALUES ($1, $2, $3, $4)`
+	return "Accepted", nil
+}
 
-	_, err = c.DB.ExecContext(ctx, query, submissionID, req.Code, req.Lang, time.Now())
-	if err != nil {
-		c.Log.Error("Failed to insert submission", slog.String("error", err.Error()))
-		return nil, fmt.Errorf("failed to insert submission: %w", err)
+func (c *checkRepo) GetSubmits(ctx context.Context, req *pb.GetSubmitsRequest) (*pb.GetSubmitsResponse, error) {
+	if req.QuestionId == "" || req.UserId == "" {
+		return nil, errors.New("question_id and user_id cannot be empty")
 	}
 
-	c.Log.Info("Successfully inserted submission", slog.String("submission_id", submissionID.String()))
+	var submits []*pb.GetSubmit
 
-	return &pb.SubmitResp{}, nil
+
+	rows, err := c.DB.QueryContext(ctx, `
+        SELECT id, question_name, status, lang, compiled_time, compiled_memory, submitted_at
+        FROM submitted
+        WHERE question_id = $1 AND user_id = $2`, req.QuestionId, req.UserId)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+
+	for rows.Next() {
+		var submit pb.GetSubmit
+		if err := rows.Scan(
+			&submit.Id,
+			&submit.QuestionName,
+			&submit.Status,
+			&submit.Language,
+			&submit.CompiledTime,
+			&submit.CompiledMemory,
+			&submit.SubmittedAt,
+		); err != nil {
+			return nil, err
+		}
+		submits = append(submits, &submit)
+	}
+
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+
+	return &pb.GetSubmitsResponse{
+		Submits: submits,
+	}, nil
 }
