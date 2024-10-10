@@ -32,14 +32,14 @@ type RunResponse struct {
 }
 
 type Request struct {
-	QuestionId   string `json:"question_id"`
-	UserId       string `json:"user_id"`
-	QuestionName string `json:"question_name"`
-	Status    string `json:"status"`
-	Language string `json:"language"`
-	CompiledTime string `json:"compiled_time"`
+	QuestionId     string `json:"question_id"`
+	UserId         string `json:"user_id"`
+	QuestionName   string `json:"question_name"`
+	Status         string `json:"status"`
+	Language       string `json:"language"`
+	CompiledTime   string `json:"compiled_time"`
 	CompiledMemory string `json:"compiled_memory"`
-	Code string `json:"code"`
-	UserTaskId string `json:"user_task_id"`
-	SubmittedAt string `json:"submitted_at"`
+	Code           string `json:"code"`
+	UserTaskId     string `json:"user_task_id"`
+	SubmittedAt    string `json:"submitted_at"`
 }

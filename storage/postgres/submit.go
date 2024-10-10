@@ -24,7 +24,28 @@ func NewCheckRepo(DB *sql.DB) repo.ICheckStorage {
 	}
 }
 
-func (c *checkRepo) Submit(ctx context.Context, req *model.) (string, error) {
+func (c *checkRepo) Submit(ctx context.Context, req *model.Request) (string, error) {
+
+	query := `
+				INSERT INTO submitted (
+					question_id, user_id, question_name, status, lang, compiled_time, compiled_memory, code, user_task_id)
+				VALUES 
+					($1, $2, $3, $4, $5, $6, $7, $8, $9)`
+
+	_, err := c.DB.ExecContext(ctx, query, 
+		req.QuestionId,
+		req.UserId,
+		req.QuestionName,
+		req.Status,
+		req.Language,
+		req.CompiledTime,
+		req.CompiledMemory,
+		req.Code,
+		req.UserTaskId)
+	if err != nil {
+		c.Log.Error(err.Error())
+		return "", err
+	}
 
 	return "Accepted", nil
 }
