@@ -13,7 +13,7 @@ import (
 
 type InputOutput struct {
 	In  string `json:"in"`
-	Out string `json:"out"`
+	Out interface{} `json:"out"`
 }
 
 type RunRequest struct {
