@@ -2,6 +2,7 @@ package postgres
 
 import (
 	"checker/logs"
+	"checker/model"
 	"checker/storage/repo"
 	"context"
 	"database/sql"
@@ -23,30 +24,12 @@ func NewCheckRepo(DB *sql.DB) repo.ICheckStorage {
 	}
 }
 
-// func (c *checkRepo) Submit(ctx context.Context, req *pb.SubmitReq) (*pb.SubmitResp, error) {
-// 	submissionID, err := uuid.NewUUID()
-// 	if err != nil {
-// 		c.Log.Error("Failed to generate UUID for submission", slog.String("error", err.Error()))
-// 		return nil, fmt.Errorf("failed to generate UUID: %w", err)
-// 	}
+func (c *checkRepo) Submit(ctx context.Context, req *model.) (string, error) {
 
-// 	query := `INSERT INTO submited
-// 	(id, code, user_task_id, submited_at)
-// 	VALUES ($1, $2, $3, $4)`
-
-// 	_, err = c.DB.ExecContext(ctx, query, submissionID, req.Code, req.Lang, time.Now())
-// 	if err != nil {
-// 		c.Log.Error("Failed to insert submission", slog.String("error", err.Error()))
-// 		return nil, fmt.Errorf("failed to insert submission: %w", err)
-// 	}
-
-// 	c.Log.Info("Successfully inserted submission", slog.String("submission_id", submissionID.String()))
-
-// 	return &pb.SubmitResp{}, nil
-// }
+	return "Accepted", nil
+}
 
 func (c *checkRepo) GetSubmits(ctx context.Context, req *pb.GetSubmitsRequest) (*pb.GetSubmitsResponse, error) {
-	// Validate the request parameters (optional).
 	if req.QuestionId == "" || req.UserId == "" {
 		return nil, errors.New("question_id and user_id cannot be empty")
 	}
@@ -55,8 +38,8 @@ func (c *checkRepo) GetSubmits(ctx context.Context, req *pb.GetSubmitsRequest) (
 
 
 	rows, err := c.DB.QueryContext(ctx, `
-        SELECT id, question_name, status, language, compiled_time, compiled_memory, submitted_at
-        FROM submits
+        SELECT id, question_name, status, lang, compiled_time, compiled_memory, submitted_at
+        FROM submitted
         WHERE question_id = $1 AND user_id = $2`, req.QuestionId, req.UserId)
 	if err != nil {
 		return nil, err
