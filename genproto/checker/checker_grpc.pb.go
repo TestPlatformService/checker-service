@@ -19,14 +19,14 @@ import (
 const _ = grpc.SupportPackageIsVersion8
 
 const (
-	CheckerService_Submit_FullMethodName = "/checker.CheckerService/Submit"
+	CheckerService_GetSubmits_FullMethodName = "/checker.CheckerService/GetSubmits"
 )
 
 // CheckerServiceClient is the client API for CheckerService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CheckerServiceClient interface {
-	Submit(ctx context.Context, in *SubmitReq, opts ...grpc.CallOption) (*SubmitResp, error)
+	GetSubmits(ctx context.Context, in *GetSubmitsRequest, opts ...grpc.CallOption) (*GetSubmitsResponse, error)
 }
 
 type checkerServiceClient struct {
@@ -37,10 +37,10 @@ func NewCheckerServiceClient(cc grpc.ClientConnInterface) CheckerServiceClient {
 	return &checkerServiceClient{cc}
 }
 
-func (c *checkerServiceClient) Submit(ctx context.Context, in *SubmitReq, opts ...grpc.CallOption) (*SubmitResp, error) {
+func (c *checkerServiceClient) GetSubmits(ctx context.Context, in *GetSubmitsRequest, opts ...grpc.CallOption) (*GetSubmitsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(SubmitResp)
-	err := c.cc.Invoke(ctx, CheckerService_Submit_FullMethodName, in, out, cOpts...)
+	out := new(GetSubmitsResponse)
+	err := c.cc.Invoke(ctx, CheckerService_GetSubmits_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func (c *checkerServiceClient) Submit(ctx context.Context, in *SubmitReq, opts .
 // All implementations must embed UnimplementedCheckerServiceServer
 // for forward compatibility
 type CheckerServiceServer interface {
-	Submit(context.Context, *SubmitReq) (*SubmitResp, error)
+	GetSubmits(context.Context, *GetSubmitsRequest) (*GetSubmitsResponse, error)
 	mustEmbedUnimplementedCheckerServiceServer()
 }
 
@@ -59,8 +59,8 @@ type CheckerServiceServer interface {
 type UnimplementedCheckerServiceServer struct {
 }
 
-func (UnimplementedCheckerServiceServer) Submit(context.Context, *SubmitReq) (*SubmitResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Submit not implemented")
+func (UnimplementedCheckerServiceServer) GetSubmits(context.Context, *GetSubmitsRequest) (*GetSubmitsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSubmits not implemented")
 }
 func (UnimplementedCheckerServiceServer) mustEmbedUnimplementedCheckerServiceServer() {}
 
@@ -75,20 +75,20 @@ func RegisterCheckerServiceServer(s grpc.ServiceRegistrar, srv CheckerServiceSer
 	s.RegisterService(&CheckerService_ServiceDesc, srv)
 }
 
-func _CheckerService_Submit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SubmitReq)
+func _CheckerService_GetSubmits_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetSubmitsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CheckerServiceServer).Submit(ctx, in)
+		return srv.(CheckerServiceServer).GetSubmits(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: CheckerService_Submit_FullMethodName,
+		FullMethod: CheckerService_GetSubmits_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CheckerServiceServer).Submit(ctx, req.(*SubmitReq))
+		return srv.(CheckerServiceServer).GetSubmits(ctx, req.(*GetSubmitsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -101,8 +101,8 @@ var CheckerService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*CheckerServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Submit",
-			Handler:    _CheckerService_Submit_Handler,
+			MethodName: "GetSubmits",
+			Handler:    _CheckerService_GetSubmits_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

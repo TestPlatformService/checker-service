@@ -383,6 +383,7 @@ const (
 	OutputService_GetAllQuestionOutputsByQuestionId_FullMethodName = "/question.OutputService/GetAllQuestionOutputsByQuestionId"
 	OutputService_UpdateQuestionOutput_FullMethodName              = "/question.OutputService/UpdateQuestionOutput"
 	OutputService_DeleteQuestionOutput_FullMethodName              = "/question.OutputService/DeleteQuestionOutput"
+	OutputService_GetQUestionOutPutByInputId_FullMethodName        = "/question.OutputService/GetQUestionOutPutByInputId"
 )
 
 // OutputServiceClient is the client API for OutputService service.
@@ -396,6 +397,7 @@ type OutputServiceClient interface {
 	GetAllQuestionOutputsByQuestionId(ctx context.Context, in *GetAllQuestionOutputsByQuestionIdRequest, opts ...grpc.CallOption) (*GetAllQuestionOutputsByQuestionIdResponse, error)
 	UpdateQuestionOutput(ctx context.Context, in *UpdateQuestionOutputRequest, opts ...grpc.CallOption) (*Void, error)
 	DeleteQuestionOutput(ctx context.Context, in *DeleteQuestionOutputRequest, opts ...grpc.CallOption) (*Void, error)
+	GetQUestionOutPutByInputId(ctx context.Context, in *GetQUestionOutPutByInputIdRequest, opts ...grpc.CallOption) (*GetQUestionOutPutByInputIdRes, error)
 }
 
 type outputServiceClient struct {
@@ -456,6 +458,16 @@ func (c *outputServiceClient) DeleteQuestionOutput(ctx context.Context, in *Dele
 	return out, nil
 }
 
+func (c *outputServiceClient) GetQUestionOutPutByInputId(ctx context.Context, in *GetQUestionOutPutByInputIdRequest, opts ...grpc.CallOption) (*GetQUestionOutPutByInputIdRes, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetQUestionOutPutByInputIdRes)
+	err := c.cc.Invoke(ctx, OutputService_GetQUestionOutPutByInputId_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // OutputServiceServer is the server API for OutputService service.
 // All implementations must embed UnimplementedOutputServiceServer
 // for forward compatibility
@@ -467,6 +479,7 @@ type OutputServiceServer interface {
 	GetAllQuestionOutputsByQuestionId(context.Context, *GetAllQuestionOutputsByQuestionIdRequest) (*GetAllQuestionOutputsByQuestionIdResponse, error)
 	UpdateQuestionOutput(context.Context, *UpdateQuestionOutputRequest) (*Void, error)
 	DeleteQuestionOutput(context.Context, *DeleteQuestionOutputRequest) (*Void, error)
+	GetQUestionOutPutByInputId(context.Context, *GetQUestionOutPutByInputIdRequest) (*GetQUestionOutPutByInputIdRes, error)
 	mustEmbedUnimplementedOutputServiceServer()
 }
 
@@ -488,6 +501,9 @@ func (UnimplementedOutputServiceServer) UpdateQuestionOutput(context.Context, *U
 }
 func (UnimplementedOutputServiceServer) DeleteQuestionOutput(context.Context, *DeleteQuestionOutputRequest) (*Void, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteQuestionOutput not implemented")
+}
+func (UnimplementedOutputServiceServer) GetQUestionOutPutByInputId(context.Context, *GetQUestionOutPutByInputIdRequest) (*GetQUestionOutPutByInputIdRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetQUestionOutPutByInputId not implemented")
 }
 func (UnimplementedOutputServiceServer) mustEmbedUnimplementedOutputServiceServer() {}
 
@@ -592,6 +608,24 @@ func _OutputService_DeleteQuestionOutput_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _OutputService_GetQUestionOutPutByInputId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetQUestionOutPutByInputIdRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OutputServiceServer).GetQUestionOutPutByInputId(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OutputService_GetQUestionOutPutByInputId_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OutputServiceServer).GetQUestionOutPutByInputId(ctx, req.(*GetQUestionOutPutByInputIdRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // OutputService_ServiceDesc is the grpc.ServiceDesc for OutputService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -618,6 +652,10 @@ var OutputService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteQuestionOutput",
 			Handler:    _OutputService_DeleteQuestionOutput_Handler,
+		},
+		{
+			MethodName: "GetQUestionOutPutByInputId",
+			Handler:    _OutputService_GetQUestionOutPutByInputId_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

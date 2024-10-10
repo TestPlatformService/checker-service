@@ -9,12 +9,13 @@ import (
 )
 
 type Config struct {
-	CHECKER_SERVICE string
-	DB_HOST      string
-	DB_PORT      string
-	DB_USER      string
-	DB_PASSWORD  string
-	DB_NAME      string
+	CHECKER_SERVICE  string
+	DB_HOST          string
+	DB_PORT          string
+	DB_USER          string
+	DB_PASSWORD      string
+	DB_NAME          string
+	QUESTION_SERVICE string
 }
 
 func LoadConfig() Config {
@@ -30,6 +31,7 @@ func LoadConfig() Config {
 	config.DB_USER = cast.ToString(coalesce("PDB_USER", "postgres"))
 	config.DB_PASSWORD = cast.ToString(coalesce("PDB_PASSWORD", "1111"))
 	config.DB_NAME = cast.ToString(coalesce("PDB_NAME", "testuzb1_checker"))
+	config.QUESTION_SERVICE = cast.ToString(coalesce("QUESTION_SERVICE", ":50053"))
 	return config
 }
 

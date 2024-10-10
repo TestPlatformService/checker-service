@@ -2,44 +2,32 @@ package handler
 
 import (
 	"bytes"
+	"checker/model"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"log/slog"
 	"net/http"
 	"time"
 
 	"github.com/gin-gonic/gin"
 )
 
-type InputOutput struct {
-	In  string      `json:"in"`
-	Out interface{} `json:"out"`
-}
-
-type RunRequest struct {
-	QuestionId string `json:"question_id"`
-	Code       string `json:"code"`
-	Lang       string `json:"lang"`
-}
-
-type RunResponse struct {
-	Status  string `json:"status"`
-	Message string `json:"message"`
-}
-
-func sendRunRequest(runReq RunRequest) (*RunResponse, error) {
+func sendRunRequest(runReq model.RunRequest, Log *slog.Logger) (*model.RunResponse, error) {
 	// API URL
 	apiURL := "https://capi.robocontest.uz/run"
 
 	// Request body'ni JSON formatga o'tkazish
 	reqBody, err := json.Marshal(runReq)
 	if err != nil {
+		Log.Error(fmt.Sprintf("Ma'lumotlarni jsonga o'girishda xatolik: %v", err))
 		return nil, err
 	}
 
 	// HTTP POST so'rovini yuborish
 	resp, err := http.Post(apiURL, "application/json", bytes.NewBuffer(reqBody))
 	if err != nil {
+		Log.Error(fmt.Sprintf("POST so'rovini yuborishda xatolik: %v", err))
 		return nil, err
 	}
 	defer resp.Body.Close()
@@ -47,12 +35,14 @@ func sendRunRequest(runReq RunRequest) (*RunResponse, error) {
 	// Javobni o'qish
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
+		Log.Error(fmt.Sprintf("Responseni o'qishda xatolik: %v", err))
 		return nil, err
 	}
 
 	// Javobni JSON formatga o'girish
-	var runResp RunResponse
+	var runResp model.RunResponse
 	if err := json.Unmarshal(body, &runResp); err != nil {
+		Log.Error(fmt.Sprintf("Ma'lumotlarni jsonga o'girishda xatolik: %v", err))
 		return nil, err
 	}
 
@@ -60,15 +50,17 @@ func sendRunRequest(runReq RunRequest) (*RunResponse, error) {
 }
 
 func (h *Handler) Check(c *gin.Context) {
-	var req RunRequest
+	var req model.RunRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
+		h.Log.Error(fmt.Sprintf("Ma'lumotlarni olishda xatolik: %v", err))
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid request body"})
 		return
 	}
 
 	// API ga request yuborish
-	runResp, err := sendRunRequest(req)
+	runResp, err := sendRunRequest(req, h.Log)
 	if err != nil {
+		h.Log.Error("Robocontest api bilan bog'lanmadi: %v", err)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to send request"})
 		return
 	}

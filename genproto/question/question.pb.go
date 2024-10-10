@@ -881,6 +881,61 @@ func (x *DeleteImageQuestionRequest) GetQuestionId() string {
 	return ""
 }
 
+type GetQuestionRandomlyRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	TopicId string `protobuf:"bytes,1,opt,name=topic_id,json=topicId,proto3" json:"topic_id,omitempty"`
+	Count   int64  `protobuf:"varint,2,opt,name=count,proto3" json:"count,omitempty"`
+}
+
+func (x *GetQuestionRandomlyRequest) Reset() {
+	*x = GetQuestionRandomlyRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_question_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetQuestionRandomlyRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetQuestionRandomlyRequest) ProtoMessage() {}
+
+func (x *GetQuestionRandomlyRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_question_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetQuestionRandomlyRequest.ProtoReflect.Descriptor instead.
+func (*GetQuestionRandomlyRequest) Descriptor() ([]byte, []int) {
+	return file_question_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *GetQuestionRandomlyRequest) GetTopicId() string {
+	if x != nil {
+		return x.TopicId
+	}
+	return ""
+}
+
+func (x *GetQuestionRandomlyRequest) GetCount() int64 {
+	if x != nil {
+		return x.Count
+	}
+	return 0
+}
+
 type CreateQuestionOutputRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -894,7 +949,7 @@ type CreateQuestionOutputRequest struct {
 func (x *CreateQuestionOutputRequest) Reset() {
 	*x = CreateQuestionOutputRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_question_proto_msgTypes[10]
+		mi := &file_question_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -907,7 +962,7 @@ func (x *CreateQuestionOutputRequest) String() string {
 func (*CreateQuestionOutputRequest) ProtoMessage() {}
 
 func (x *CreateQuestionOutputRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_question_proto_msgTypes[10]
+	mi := &file_question_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -920,7 +975,7 @@ func (x *CreateQuestionOutputRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateQuestionOutputRequest.ProtoReflect.Descriptor instead.
 func (*CreateQuestionOutputRequest) Descriptor() ([]byte, []int) {
-	return file_question_proto_rawDescGZIP(), []int{10}
+	return file_question_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *CreateQuestionOutputRequest) GetQuestionId() string {
@@ -955,7 +1010,7 @@ type QuestionOutputId struct {
 func (x *QuestionOutputId) Reset() {
 	*x = QuestionOutputId{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_question_proto_msgTypes[11]
+		mi := &file_question_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -968,7 +1023,7 @@ func (x *QuestionOutputId) String() string {
 func (*QuestionOutputId) ProtoMessage() {}
 
 func (x *QuestionOutputId) ProtoReflect() protoreflect.Message {
-	mi := &file_question_proto_msgTypes[11]
+	mi := &file_question_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -981,7 +1036,7 @@ func (x *QuestionOutputId) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use QuestionOutputId.ProtoReflect.Descriptor instead.
 func (*QuestionOutputId) Descriptor() ([]byte, []int) {
-	return file_question_proto_rawDescGZIP(), []int{11}
+	return file_question_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *QuestionOutputId) GetId() string {
@@ -1002,7 +1057,7 @@ type GetAllQuestionOutputsByQuestionIdRequest struct {
 func (x *GetAllQuestionOutputsByQuestionIdRequest) Reset() {
 	*x = GetAllQuestionOutputsByQuestionIdRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_question_proto_msgTypes[12]
+		mi := &file_question_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1015,7 +1070,7 @@ func (x *GetAllQuestionOutputsByQuestionIdRequest) String() string {
 func (*GetAllQuestionOutputsByQuestionIdRequest) ProtoMessage() {}
 
 func (x *GetAllQuestionOutputsByQuestionIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_question_proto_msgTypes[12]
+	mi := &file_question_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1028,7 +1083,7 @@ func (x *GetAllQuestionOutputsByQuestionIdRequest) ProtoReflect() protoreflect.M
 
 // Deprecated: Use GetAllQuestionOutputsByQuestionIdRequest.ProtoReflect.Descriptor instead.
 func (*GetAllQuestionOutputsByQuestionIdRequest) Descriptor() ([]byte, []int) {
-	return file_question_proto_rawDescGZIP(), []int{12}
+	return file_question_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *GetAllQuestionOutputsByQuestionIdRequest) GetQuestionId() string {
@@ -1049,7 +1104,7 @@ type GetAllQuestionOutputsByQuestionIdResponse struct {
 func (x *GetAllQuestionOutputsByQuestionIdResponse) Reset() {
 	*x = GetAllQuestionOutputsByQuestionIdResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_question_proto_msgTypes[13]
+		mi := &file_question_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1062,7 +1117,7 @@ func (x *GetAllQuestionOutputsByQuestionIdResponse) String() string {
 func (*GetAllQuestionOutputsByQuestionIdResponse) ProtoMessage() {}
 
 func (x *GetAllQuestionOutputsByQuestionIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_question_proto_msgTypes[13]
+	mi := &file_question_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1075,7 +1130,7 @@ func (x *GetAllQuestionOutputsByQuestionIdResponse) ProtoReflect() protoreflect.
 
 // Deprecated: Use GetAllQuestionOutputsByQuestionIdResponse.ProtoReflect.Descriptor instead.
 func (*GetAllQuestionOutputsByQuestionIdResponse) Descriptor() ([]byte, []int) {
-	return file_question_proto_rawDescGZIP(), []int{13}
+	return file_question_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *GetAllQuestionOutputsByQuestionIdResponse) GetQuestionOutputs() []*GetQuestionOutputResponse {
@@ -1099,7 +1154,7 @@ type GetQuestionOutputResponse struct {
 func (x *GetQuestionOutputResponse) Reset() {
 	*x = GetQuestionOutputResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_question_proto_msgTypes[14]
+		mi := &file_question_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1112,7 +1167,7 @@ func (x *GetQuestionOutputResponse) String() string {
 func (*GetQuestionOutputResponse) ProtoMessage() {}
 
 func (x *GetQuestionOutputResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_question_proto_msgTypes[14]
+	mi := &file_question_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1125,7 +1180,7 @@ func (x *GetQuestionOutputResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetQuestionOutputResponse.ProtoReflect.Descriptor instead.
 func (*GetQuestionOutputResponse) Descriptor() ([]byte, []int) {
-	return file_question_proto_rawDescGZIP(), []int{14}
+	return file_question_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *GetQuestionOutputResponse) GetId() string {
@@ -1170,7 +1225,7 @@ type UpdateQuestionOutputRequest struct {
 func (x *UpdateQuestionOutputRequest) Reset() {
 	*x = UpdateQuestionOutputRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_question_proto_msgTypes[15]
+		mi := &file_question_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1183,7 +1238,7 @@ func (x *UpdateQuestionOutputRequest) String() string {
 func (*UpdateQuestionOutputRequest) ProtoMessage() {}
 
 func (x *UpdateQuestionOutputRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_question_proto_msgTypes[15]
+	mi := &file_question_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1196,7 +1251,7 @@ func (x *UpdateQuestionOutputRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateQuestionOutputRequest.ProtoReflect.Descriptor instead.
 func (*UpdateQuestionOutputRequest) Descriptor() ([]byte, []int) {
-	return file_question_proto_rawDescGZIP(), []int{15}
+	return file_question_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *UpdateQuestionOutputRequest) GetId() string {
@@ -1238,7 +1293,7 @@ type DeleteQuestionOutputRequest struct {
 func (x *DeleteQuestionOutputRequest) Reset() {
 	*x = DeleteQuestionOutputRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_question_proto_msgTypes[16]
+		mi := &file_question_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1251,7 +1306,7 @@ func (x *DeleteQuestionOutputRequest) String() string {
 func (*DeleteQuestionOutputRequest) ProtoMessage() {}
 
 func (x *DeleteQuestionOutputRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_question_proto_msgTypes[16]
+	mi := &file_question_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1264,7 +1319,7 @@ func (x *DeleteQuestionOutputRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteQuestionOutputRequest.ProtoReflect.Descriptor instead.
 func (*DeleteQuestionOutputRequest) Descriptor() ([]byte, []int) {
-	return file_question_proto_rawDescGZIP(), []int{16}
+	return file_question_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *DeleteQuestionOutputRequest) GetId() string {
@@ -1272,6 +1327,100 @@ func (x *DeleteQuestionOutputRequest) GetId() string {
 		return x.Id
 	}
 	return ""
+}
+
+type GetQUestionOutPutByInputIdRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	InputId string `protobuf:"bytes,1,opt,name=input_id,json=inputId,proto3" json:"input_id,omitempty"`
+}
+
+func (x *GetQUestionOutPutByInputIdRequest) Reset() {
+	*x = GetQUestionOutPutByInputIdRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_question_proto_msgTypes[18]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetQUestionOutPutByInputIdRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetQUestionOutPutByInputIdRequest) ProtoMessage() {}
+
+func (x *GetQUestionOutPutByInputIdRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_question_proto_msgTypes[18]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetQUestionOutPutByInputIdRequest.ProtoReflect.Descriptor instead.
+func (*GetQUestionOutPutByInputIdRequest) Descriptor() ([]byte, []int) {
+	return file_question_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *GetQUestionOutPutByInputIdRequest) GetInputId() string {
+	if x != nil {
+		return x.InputId
+	}
+	return ""
+}
+
+type GetQUestionOutPutByInputIdRes struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	QuestionOutputs []*GetQuestionOutputResponse `protobuf:"bytes,1,rep,name=question_outputs,json=questionOutputs,proto3" json:"question_outputs,omitempty"`
+}
+
+func (x *GetQUestionOutPutByInputIdRes) Reset() {
+	*x = GetQUestionOutPutByInputIdRes{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_question_proto_msgTypes[19]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetQUestionOutPutByInputIdRes) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetQUestionOutPutByInputIdRes) ProtoMessage() {}
+
+func (x *GetQUestionOutPutByInputIdRes) ProtoReflect() protoreflect.Message {
+	mi := &file_question_proto_msgTypes[19]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetQUestionOutPutByInputIdRes.ProtoReflect.Descriptor instead.
+func (*GetQUestionOutPutByInputIdRes) Descriptor() ([]byte, []int) {
+	return file_question_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *GetQUestionOutPutByInputIdRes) GetQuestionOutputs() []*GetQuestionOutputResponse {
+	if x != nil {
+		return x.QuestionOutputs
+	}
+	return nil
 }
 
 type CreateQuestionInputRequest struct {
@@ -1286,7 +1435,7 @@ type CreateQuestionInputRequest struct {
 func (x *CreateQuestionInputRequest) Reset() {
 	*x = CreateQuestionInputRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_question_proto_msgTypes[17]
+		mi := &file_question_proto_msgTypes[20]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1299,7 +1448,7 @@ func (x *CreateQuestionInputRequest) String() string {
 func (*CreateQuestionInputRequest) ProtoMessage() {}
 
 func (x *CreateQuestionInputRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_question_proto_msgTypes[17]
+	mi := &file_question_proto_msgTypes[20]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1312,7 +1461,7 @@ func (x *CreateQuestionInputRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateQuestionInputRequest.ProtoReflect.Descriptor instead.
 func (*CreateQuestionInputRequest) Descriptor() ([]byte, []int) {
-	return file_question_proto_rawDescGZIP(), []int{17}
+	return file_question_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *CreateQuestionInputRequest) GetQuestionId() string {
@@ -1340,7 +1489,7 @@ type QuestionInputId struct {
 func (x *QuestionInputId) Reset() {
 	*x = QuestionInputId{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_question_proto_msgTypes[18]
+		mi := &file_question_proto_msgTypes[21]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1353,7 +1502,7 @@ func (x *QuestionInputId) String() string {
 func (*QuestionInputId) ProtoMessage() {}
 
 func (x *QuestionInputId) ProtoReflect() protoreflect.Message {
-	mi := &file_question_proto_msgTypes[18]
+	mi := &file_question_proto_msgTypes[21]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1366,7 +1515,7 @@ func (x *QuestionInputId) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use QuestionInputId.ProtoReflect.Descriptor instead.
 func (*QuestionInputId) Descriptor() ([]byte, []int) {
-	return file_question_proto_rawDescGZIP(), []int{18}
+	return file_question_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *QuestionInputId) GetId() string {
@@ -1389,7 +1538,7 @@ type GetQuestionInputResponse struct {
 func (x *GetQuestionInputResponse) Reset() {
 	*x = GetQuestionInputResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_question_proto_msgTypes[19]
+		mi := &file_question_proto_msgTypes[22]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1402,7 +1551,7 @@ func (x *GetQuestionInputResponse) String() string {
 func (*GetQuestionInputResponse) ProtoMessage() {}
 
 func (x *GetQuestionInputResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_question_proto_msgTypes[19]
+	mi := &file_question_proto_msgTypes[22]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1415,7 +1564,7 @@ func (x *GetQuestionInputResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetQuestionInputResponse.ProtoReflect.Descriptor instead.
 func (*GetQuestionInputResponse) Descriptor() ([]byte, []int) {
-	return file_question_proto_rawDescGZIP(), []int{19}
+	return file_question_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *GetQuestionInputResponse) GetId() string {
@@ -1450,7 +1599,7 @@ type GetAllQuestionInputsByQuestionIdRequest struct {
 func (x *GetAllQuestionInputsByQuestionIdRequest) Reset() {
 	*x = GetAllQuestionInputsByQuestionIdRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_question_proto_msgTypes[20]
+		mi := &file_question_proto_msgTypes[23]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1463,7 +1612,7 @@ func (x *GetAllQuestionInputsByQuestionIdRequest) String() string {
 func (*GetAllQuestionInputsByQuestionIdRequest) ProtoMessage() {}
 
 func (x *GetAllQuestionInputsByQuestionIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_question_proto_msgTypes[20]
+	mi := &file_question_proto_msgTypes[23]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1476,7 +1625,7 @@ func (x *GetAllQuestionInputsByQuestionIdRequest) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use GetAllQuestionInputsByQuestionIdRequest.ProtoReflect.Descriptor instead.
 func (*GetAllQuestionInputsByQuestionIdRequest) Descriptor() ([]byte, []int) {
-	return file_question_proto_rawDescGZIP(), []int{20}
+	return file_question_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *GetAllQuestionInputsByQuestionIdRequest) GetQuestionId() string {
@@ -1497,7 +1646,7 @@ type GetAllQuestionInputsByQuestionIdResponse struct {
 func (x *GetAllQuestionInputsByQuestionIdResponse) Reset() {
 	*x = GetAllQuestionInputsByQuestionIdResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_question_proto_msgTypes[21]
+		mi := &file_question_proto_msgTypes[24]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1510,7 +1659,7 @@ func (x *GetAllQuestionInputsByQuestionIdResponse) String() string {
 func (*GetAllQuestionInputsByQuestionIdResponse) ProtoMessage() {}
 
 func (x *GetAllQuestionInputsByQuestionIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_question_proto_msgTypes[21]
+	mi := &file_question_proto_msgTypes[24]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1523,7 +1672,7 @@ func (x *GetAllQuestionInputsByQuestionIdResponse) ProtoReflect() protoreflect.M
 
 // Deprecated: Use GetAllQuestionInputsByQuestionIdResponse.ProtoReflect.Descriptor instead.
 func (*GetAllQuestionInputsByQuestionIdResponse) Descriptor() ([]byte, []int) {
-	return file_question_proto_rawDescGZIP(), []int{21}
+	return file_question_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *GetAllQuestionInputsByQuestionIdResponse) GetQuestionInputs() []*GetQuestionInputResponse {
@@ -1546,7 +1695,7 @@ type UpdateQuestionInputRequest struct {
 func (x *UpdateQuestionInputRequest) Reset() {
 	*x = UpdateQuestionInputRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_question_proto_msgTypes[22]
+		mi := &file_question_proto_msgTypes[25]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1559,7 +1708,7 @@ func (x *UpdateQuestionInputRequest) String() string {
 func (*UpdateQuestionInputRequest) ProtoMessage() {}
 
 func (x *UpdateQuestionInputRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_question_proto_msgTypes[22]
+	mi := &file_question_proto_msgTypes[25]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1572,7 +1721,7 @@ func (x *UpdateQuestionInputRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateQuestionInputRequest.ProtoReflect.Descriptor instead.
 func (*UpdateQuestionInputRequest) Descriptor() ([]byte, []int) {
-	return file_question_proto_rawDescGZIP(), []int{22}
+	return file_question_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *UpdateQuestionInputRequest) GetId() string {
@@ -1607,7 +1756,7 @@ type DeleteQuestionInputRequest struct {
 func (x *DeleteQuestionInputRequest) Reset() {
 	*x = DeleteQuestionInputRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_question_proto_msgTypes[23]
+		mi := &file_question_proto_msgTypes[26]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1620,7 +1769,7 @@ func (x *DeleteQuestionInputRequest) String() string {
 func (*DeleteQuestionInputRequest) ProtoMessage() {}
 
 func (x *DeleteQuestionInputRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_question_proto_msgTypes[23]
+	mi := &file_question_proto_msgTypes[26]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1633,7 +1782,7 @@ func (x *DeleteQuestionInputRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteQuestionInputRequest.ProtoReflect.Descriptor instead.
 func (*DeleteQuestionInputRequest) Descriptor() ([]byte, []int) {
-	return file_question_proto_rawDescGZIP(), []int{23}
+	return file_question_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *DeleteQuestionInputRequest) GetId() string {
@@ -1656,7 +1805,7 @@ type CreateTestCaseRequest struct {
 func (x *CreateTestCaseRequest) Reset() {
 	*x = CreateTestCaseRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_question_proto_msgTypes[24]
+		mi := &file_question_proto_msgTypes[27]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1669,7 +1818,7 @@ func (x *CreateTestCaseRequest) String() string {
 func (*CreateTestCaseRequest) ProtoMessage() {}
 
 func (x *CreateTestCaseRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_question_proto_msgTypes[24]
+	mi := &file_question_proto_msgTypes[27]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1682,7 +1831,7 @@ func (x *CreateTestCaseRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateTestCaseRequest.ProtoReflect.Descriptor instead.
 func (*CreateTestCaseRequest) Descriptor() ([]byte, []int) {
-	return file_question_proto_rawDescGZIP(), []int{24}
+	return file_question_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *CreateTestCaseRequest) GetQuestionId() string {
@@ -1717,7 +1866,7 @@ type TestCaseId struct {
 func (x *TestCaseId) Reset() {
 	*x = TestCaseId{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_question_proto_msgTypes[25]
+		mi := &file_question_proto_msgTypes[28]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1730,7 +1879,7 @@ func (x *TestCaseId) String() string {
 func (*TestCaseId) ProtoMessage() {}
 
 func (x *TestCaseId) ProtoReflect() protoreflect.Message {
-	mi := &file_question_proto_msgTypes[25]
+	mi := &file_question_proto_msgTypes[28]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1743,7 +1892,7 @@ func (x *TestCaseId) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TestCaseId.ProtoReflect.Descriptor instead.
 func (*TestCaseId) Descriptor() ([]byte, []int) {
-	return file_question_proto_rawDescGZIP(), []int{25}
+	return file_question_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *TestCaseId) GetId() string {
@@ -1767,7 +1916,7 @@ type GetTestCaseResponse struct {
 func (x *GetTestCaseResponse) Reset() {
 	*x = GetTestCaseResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_question_proto_msgTypes[26]
+		mi := &file_question_proto_msgTypes[29]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1780,7 +1929,7 @@ func (x *GetTestCaseResponse) String() string {
 func (*GetTestCaseResponse) ProtoMessage() {}
 
 func (x *GetTestCaseResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_question_proto_msgTypes[26]
+	mi := &file_question_proto_msgTypes[29]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1793,7 +1942,7 @@ func (x *GetTestCaseResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTestCaseResponse.ProtoReflect.Descriptor instead.
 func (*GetTestCaseResponse) Descriptor() ([]byte, []int) {
-	return file_question_proto_rawDescGZIP(), []int{26}
+	return file_question_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *GetTestCaseResponse) GetId() string {
@@ -1835,7 +1984,7 @@ type GetAllTestCasesByQuestionIdRequest struct {
 func (x *GetAllTestCasesByQuestionIdRequest) Reset() {
 	*x = GetAllTestCasesByQuestionIdRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_question_proto_msgTypes[27]
+		mi := &file_question_proto_msgTypes[30]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1848,7 +1997,7 @@ func (x *GetAllTestCasesByQuestionIdRequest) String() string {
 func (*GetAllTestCasesByQuestionIdRequest) ProtoMessage() {}
 
 func (x *GetAllTestCasesByQuestionIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_question_proto_msgTypes[27]
+	mi := &file_question_proto_msgTypes[30]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1861,7 +2010,7 @@ func (x *GetAllTestCasesByQuestionIdRequest) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use GetAllTestCasesByQuestionIdRequest.ProtoReflect.Descriptor instead.
 func (*GetAllTestCasesByQuestionIdRequest) Descriptor() ([]byte, []int) {
-	return file_question_proto_rawDescGZIP(), []int{27}
+	return file_question_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *GetAllTestCasesByQuestionIdRequest) GetQuestionId() string {
@@ -1882,7 +2031,7 @@ type GetAllTestCasesByQuestionIdResponse struct {
 func (x *GetAllTestCasesByQuestionIdResponse) Reset() {
 	*x = GetAllTestCasesByQuestionIdResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_question_proto_msgTypes[28]
+		mi := &file_question_proto_msgTypes[31]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1895,7 +2044,7 @@ func (x *GetAllTestCasesByQuestionIdResponse) String() string {
 func (*GetAllTestCasesByQuestionIdResponse) ProtoMessage() {}
 
 func (x *GetAllTestCasesByQuestionIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_question_proto_msgTypes[28]
+	mi := &file_question_proto_msgTypes[31]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1908,7 +2057,7 @@ func (x *GetAllTestCasesByQuestionIdResponse) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use GetAllTestCasesByQuestionIdResponse.ProtoReflect.Descriptor instead.
 func (*GetAllTestCasesByQuestionIdResponse) Descriptor() ([]byte, []int) {
-	return file_question_proto_rawDescGZIP(), []int{28}
+	return file_question_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *GetAllTestCasesByQuestionIdResponse) GetTestCases() []*GetTestCaseResponse {
@@ -1932,7 +2081,7 @@ type UpdateTestCaseRequest struct {
 func (x *UpdateTestCaseRequest) Reset() {
 	*x = UpdateTestCaseRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_question_proto_msgTypes[29]
+		mi := &file_question_proto_msgTypes[32]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1945,7 +2094,7 @@ func (x *UpdateTestCaseRequest) String() string {
 func (*UpdateTestCaseRequest) ProtoMessage() {}
 
 func (x *UpdateTestCaseRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_question_proto_msgTypes[29]
+	mi := &file_question_proto_msgTypes[32]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1958,7 +2107,7 @@ func (x *UpdateTestCaseRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateTestCaseRequest.ProtoReflect.Descriptor instead.
 func (*UpdateTestCaseRequest) Descriptor() ([]byte, []int) {
-	return file_question_proto_rawDescGZIP(), []int{29}
+	return file_question_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *UpdateTestCaseRequest) GetId() string {
@@ -2000,7 +2149,7 @@ type DeleteTestCaseRequest struct {
 func (x *DeleteTestCaseRequest) Reset() {
 	*x = DeleteTestCaseRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_question_proto_msgTypes[30]
+		mi := &file_question_proto_msgTypes[33]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2013,7 +2162,7 @@ func (x *DeleteTestCaseRequest) String() string {
 func (*DeleteTestCaseRequest) ProtoMessage() {}
 
 func (x *DeleteTestCaseRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_question_proto_msgTypes[30]
+	mi := &file_question_proto_msgTypes[33]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2026,7 +2175,7 @@ func (x *DeleteTestCaseRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteTestCaseRequest.ProtoReflect.Descriptor instead.
 func (*DeleteTestCaseRequest) Descriptor() ([]byte, []int) {
-	return file_question_proto_rawDescGZIP(), []int{30}
+	return file_question_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *DeleteTestCaseRequest) GetId() string {
@@ -2156,48 +2305,64 @@ var file_question_proto_rawDesc = []byte{
 	0x6c, 0x65, 0x74, 0x65, 0x49, 0x6d, 0x61, 0x67, 0x65, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f,
 	0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1f, 0x0a, 0x0b, 0x71, 0x75, 0x65, 0x73,
 	0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x22, 0x71, 0x0a, 0x1b, 0x43, 0x72, 0x65,
-	0x61, 0x74, 0x65, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x75, 0x74, 0x70, 0x75,
-	0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1f, 0x0a, 0x0b, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x12, 0x19, 0x0a, 0x08, 0x69, 0x6e, 0x70,
-	0x75, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x69, 0x6e, 0x70,
-	0x75, 0x74, 0x49, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x61, 0x6e, 0x73, 0x77, 0x65, 0x72, 0x18, 0x03,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x61, 0x6e, 0x73, 0x77, 0x65, 0x72, 0x22, 0x22, 0x0a, 0x10,
-	0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x75, 0x74, 0x70, 0x75, 0x74, 0x49, 0x64,
-	0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64,
-	0x22, 0x4b, 0x0a, 0x28, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69,
-	0x6f, 0x6e, 0x4f, 0x75, 0x74, 0x70, 0x75, 0x74, 0x73, 0x42, 0x79, 0x51, 0x75, 0x65, 0x73, 0x74,
-	0x69, 0x6f, 0x6e, 0x49, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1f, 0x0a, 0x0b,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x0a, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x22, 0x7b, 0x0a,
-	0x29, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x4f,
-	0x75, 0x74, 0x70, 0x75, 0x74, 0x73, 0x42, 0x79, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e,
-	0x49, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x4e, 0x0a, 0x10, 0x71, 0x75,
-	0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x6f, 0x75, 0x74, 0x70, 0x75, 0x74, 0x73, 0x18, 0x01,
-	0x20, 0x03, 0x28, 0x0b, 0x32, 0x23, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e,
-	0x47, 0x65, 0x74, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x75, 0x74, 0x70, 0x75,
-	0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x52, 0x0f, 0x71, 0x75, 0x65, 0x73, 0x74,
-	0x69, 0x6f, 0x6e, 0x4f, 0x75, 0x74, 0x70, 0x75, 0x74, 0x73, 0x22, 0x7f, 0x0a, 0x19, 0x47, 0x65,
-	0x74, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x75, 0x74, 0x70, 0x75, 0x74, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x1f, 0x0a, 0x0b, 0x71, 0x75, 0x65, 0x73, 0x74,
-	0x69, 0x6f, 0x6e, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x71, 0x75,
+	0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x22, 0x4d, 0x0a, 0x1a, 0x47, 0x65, 0x74,
+	0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x61, 0x6e, 0x64, 0x6f, 0x6d, 0x6c, 0x79,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x19, 0x0a, 0x08, 0x74, 0x6f, 0x70, 0x69, 0x63,
+	0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x74, 0x6f, 0x70, 0x69, 0x63,
+	0x49, 0x64, 0x12, 0x14, 0x0a, 0x05, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x03, 0x52, 0x05, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x22, 0x71, 0x0a, 0x1b, 0x43, 0x72, 0x65, 0x61,
+	0x74, 0x65, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x75, 0x74, 0x70, 0x75, 0x74,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1f, 0x0a, 0x0b, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x69, 0x6f, 0x6e, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x71, 0x75,
 	0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x12, 0x19, 0x0a, 0x08, 0x69, 0x6e, 0x70, 0x75,
-	0x74, 0x5f, 0x69, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x69, 0x6e, 0x70, 0x75,
-	0x74, 0x49, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x61, 0x6e, 0x73, 0x77, 0x65, 0x72, 0x18, 0x04, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x06, 0x61, 0x6e, 0x73, 0x77, 0x65, 0x72, 0x22, 0x81, 0x01, 0x0a, 0x1b,
-	0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x75,
-	0x74, 0x70, 0x75, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x69,
-	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x1f, 0x0a, 0x0b, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x0a, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x12, 0x19, 0x0a, 0x08,
-	0x69, 0x6e, 0x70, 0x75, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07,
-	0x69, 0x6e, 0x70, 0x75, 0x74, 0x49, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x61, 0x6e, 0x73, 0x77, 0x65,
-	0x72, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x61, 0x6e, 0x73, 0x77, 0x65, 0x72, 0x22,
-	0x2d, 0x0a, 0x1b, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f,
-	0x6e, 0x4f, 0x75, 0x74, 0x70, 0x75, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e,
-	0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x22, 0x53,
+	0x74, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x69, 0x6e, 0x70, 0x75,
+	0x74, 0x49, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x61, 0x6e, 0x73, 0x77, 0x65, 0x72, 0x18, 0x03, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x06, 0x61, 0x6e, 0x73, 0x77, 0x65, 0x72, 0x22, 0x22, 0x0a, 0x10, 0x51,
+	0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x75, 0x74, 0x70, 0x75, 0x74, 0x49, 0x64, 0x12,
+	0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x22,
+	0x4b, 0x0a, 0x28, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f,
+	0x6e, 0x4f, 0x75, 0x74, 0x70, 0x75, 0x74, 0x73, 0x42, 0x79, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69,
+	0x6f, 0x6e, 0x49, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1f, 0x0a, 0x0b, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x0a, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x22, 0x7b, 0x0a, 0x29,
+	0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x75,
+	0x74, 0x70, 0x75, 0x74, 0x73, 0x42, 0x79, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49,
+	0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x4e, 0x0a, 0x10, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x6f, 0x75, 0x74, 0x70, 0x75, 0x74, 0x73, 0x18, 0x01, 0x20,
+	0x03, 0x28, 0x0b, 0x32, 0x23, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x47,
+	0x65, 0x74, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x75, 0x74, 0x70, 0x75, 0x74,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x52, 0x0f, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69,
+	0x6f, 0x6e, 0x4f, 0x75, 0x74, 0x70, 0x75, 0x74, 0x73, 0x22, 0x7f, 0x0a, 0x19, 0x47, 0x65, 0x74,
+	0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x75, 0x74, 0x70, 0x75, 0x74, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x1f, 0x0a, 0x0b, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69,
+	0x6f, 0x6e, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x12, 0x19, 0x0a, 0x08, 0x69, 0x6e, 0x70, 0x75, 0x74,
+	0x5f, 0x69, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x69, 0x6e, 0x70, 0x75, 0x74,
+	0x49, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x61, 0x6e, 0x73, 0x77, 0x65, 0x72, 0x18, 0x04, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x06, 0x61, 0x6e, 0x73, 0x77, 0x65, 0x72, 0x22, 0x81, 0x01, 0x0a, 0x1b, 0x55,
+	0x70, 0x64, 0x61, 0x74, 0x65, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x75, 0x74,
+	0x70, 0x75, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x1f, 0x0a, 0x0b, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x0a, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x12, 0x19, 0x0a, 0x08, 0x69,
+	0x6e, 0x70, 0x75, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x69,
+	0x6e, 0x70, 0x75, 0x74, 0x49, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x61, 0x6e, 0x73, 0x77, 0x65, 0x72,
+	0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x61, 0x6e, 0x73, 0x77, 0x65, 0x72, 0x22, 0x2d,
+	0x0a, 0x1b, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e,
+	0x4f, 0x75, 0x74, 0x70, 0x75, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a,
+	0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x22, 0x3e, 0x0a,
+	0x21, 0x47, 0x65, 0x74, 0x51, 0x55, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x75, 0x74, 0x50,
+	0x75, 0x74, 0x42, 0x79, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x49, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x12, 0x19, 0x0a, 0x08, 0x69, 0x6e, 0x70, 0x75, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x69, 0x6e, 0x70, 0x75, 0x74, 0x49, 0x64, 0x22, 0x6f, 0x0a,
+	0x1d, 0x47, 0x65, 0x74, 0x51, 0x55, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x75, 0x74, 0x50,
+	0x75, 0x74, 0x42, 0x79, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x49, 0x64, 0x52, 0x65, 0x73, 0x12, 0x4e,
+	0x0a, 0x10, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x6f, 0x75, 0x74, 0x70, 0x75,
+	0x74, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x23, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x69, 0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x4f,
+	0x75, 0x74, 0x70, 0x75, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x52, 0x0f, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x75, 0x74, 0x70, 0x75, 0x74, 0x73, 0x22, 0x53,
 	0x0a, 0x1a, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e,
 	0x49, 0x6e, 0x70, 0x75, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1f, 0x0a, 0x0b,
 	0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
@@ -2307,7 +2472,7 @@ var file_question_proto_rawDesc = []byte{
 	0x69, 0x64, 0x12, 0x37, 0x0a, 0x0f, 0x49, 0x73, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e,
 	0x45, 0x78, 0x69, 0x73, 0x74, 0x12, 0x14, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e,
 	0x2e, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x1a, 0x0e, 0x2e, 0x71, 0x75,
-	0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x56, 0x6f, 0x69, 0x64, 0x32, 0xed, 0x03, 0x0a, 0x0d,
+	0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x56, 0x6f, 0x69, 0x64, 0x32, 0xe1, 0x04, 0x0a, 0x0d,
 	0x4f, 0x75, 0x74, 0x70, 0x75, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x59, 0x0a,
 	0x14, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x4f,
 	0x75, 0x74, 0x70, 0x75, 0x74, 0x12, 0x25, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e,
@@ -2338,65 +2503,73 @@ var file_question_proto_rawDesc = []byte{
 	0x74, 0x70, 0x75, 0x74, 0x12, 0x25, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e,
 	0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x75,
 	0x74, 0x70, 0x75, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x0e, 0x2e, 0x71, 0x75,
-	0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x56, 0x6f, 0x69, 0x64, 0x32, 0xdf, 0x03, 0x0a, 0x0c,
-	0x49, 0x6e, 0x70, 0x75, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x56, 0x0a, 0x13,
-	0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e,
-	0x70, 0x75, 0x74, 0x12, 0x24, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x43,
-	0x72, 0x65, 0x61, 0x74, 0x65, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x70,
-	0x75, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x19, 0x2e, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x70,
-	0x75, 0x74, 0x49, 0x64, 0x12, 0x51, 0x0a, 0x10, 0x47, 0x65, 0x74, 0x51, 0x75, 0x65, 0x73, 0x74,
-	0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x12, 0x19, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74,
-	0x69, 0x6f, 0x6e, 0x2e, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x70, 0x75,
-	0x74, 0x49, 0x64, 0x1a, 0x22, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x47,
-	0x65, 0x74, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x89, 0x01, 0x0a, 0x20, 0x47, 0x65, 0x74, 0x41,
-	0x6c, 0x6c, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x73,
-	0x42, 0x79, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x12, 0x31, 0x2e, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x51, 0x75,
-	0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x73, 0x42, 0x79, 0x51, 0x75,
-	0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
-	0x32, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x41, 0x6c,
-	0x6c, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x73, 0x42,
-	0x79, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f,
-	0x6e, 0x73, 0x65, 0x12, 0x4b, 0x0a, 0x13, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x51, 0x75, 0x65,
-	0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x12, 0x24, 0x2e, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x51, 0x75, 0x65, 0x73,
-	0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
-	0x1a, 0x0e, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x56, 0x6f, 0x69, 0x64,
-	0x12, 0x4b, 0x0a, 0x13, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69,
+	0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x56, 0x6f, 0x69, 0x64, 0x12, 0x72, 0x0a, 0x1a, 0x47,
+	0x65, 0x74, 0x51, 0x55, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x75, 0x74, 0x50, 0x75, 0x74,
+	0x42, 0x79, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x49, 0x64, 0x12, 0x2b, 0x2e, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x51, 0x55, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e,
+	0x4f, 0x75, 0x74, 0x50, 0x75, 0x74, 0x42, 0x79, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x49, 0x64, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x27, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f,
+	0x6e, 0x2e, 0x47, 0x65, 0x74, 0x51, 0x55, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x75, 0x74,
+	0x50, 0x75, 0x74, 0x42, 0x79, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x49, 0x64, 0x52, 0x65, 0x73, 0x32,
+	0xdf, 0x03, 0x0a, 0x0c, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
+	0x12, 0x56, 0x0a, 0x13, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69,
 	0x6f, 0x6e, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x12, 0x24, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69,
-	0x6f, 0x6e, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f,
-	0x6e, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x0e, 0x2e,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x56, 0x6f, 0x69, 0x64, 0x32, 0xa0, 0x03,
-	0x0a, 0x0f, 0x54, 0x65, 0x73, 0x74, 0x43, 0x61, 0x73, 0x65, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
-	0x65, 0x12, 0x47, 0x0a, 0x0e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x54, 0x65, 0x73, 0x74, 0x43,
-	0x61, 0x73, 0x65, 0x12, 0x1f, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x43,
-	0x72, 0x65, 0x61, 0x74, 0x65, 0x54, 0x65, 0x73, 0x74, 0x43, 0x61, 0x73, 0x65, 0x52, 0x65, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x1a, 0x14, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e,
-	0x54, 0x65, 0x73, 0x74, 0x43, 0x61, 0x73, 0x65, 0x49, 0x64, 0x12, 0x42, 0x0a, 0x0b, 0x47, 0x65,
-	0x74, 0x54, 0x65, 0x73, 0x74, 0x43, 0x61, 0x73, 0x65, 0x12, 0x14, 0x2e, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x54, 0x65, 0x73, 0x74, 0x43, 0x61, 0x73, 0x65, 0x49, 0x64, 0x1a,
-	0x1d, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x54, 0x65,
-	0x73, 0x74, 0x43, 0x61, 0x73, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x7a,
-	0x0a, 0x1b, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x54, 0x65, 0x73, 0x74, 0x43, 0x61, 0x73, 0x65,
-	0x73, 0x42, 0x79, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x12, 0x2c, 0x2e,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x54,
-	0x65, 0x73, 0x74, 0x43, 0x61, 0x73, 0x65, 0x73, 0x42, 0x79, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69,
-	0x6f, 0x6e, 0x49, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2d, 0x2e, 0x71, 0x75,
-	0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x54, 0x65, 0x73,
-	0x74, 0x43, 0x61, 0x73, 0x65, 0x73, 0x42, 0x79, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e,
-	0x49, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x41, 0x0a, 0x0e, 0x55, 0x70,
-	0x64, 0x61, 0x74, 0x65, 0x54, 0x65, 0x73, 0x74, 0x43, 0x61, 0x73, 0x65, 0x12, 0x1f, 0x2e, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x54, 0x65,
-	0x73, 0x74, 0x43, 0x61, 0x73, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x0e, 0x2e,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x56, 0x6f, 0x69, 0x64, 0x12, 0x41, 0x0a,
-	0x0e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x54, 0x65, 0x73, 0x74, 0x43, 0x61, 0x73, 0x65, 0x12,
-	0x1f, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74,
-	0x65, 0x54, 0x65, 0x73, 0x74, 0x43, 0x61, 0x73, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
-	0x1a, 0x0e, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x56, 0x6f, 0x69, 0x64,
-	0x42, 0x13, 0x5a, 0x11, 0x67, 0x65, 0x6e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x69, 0x6f, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6f, 0x6e, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f,
+	0x6e, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x19, 0x2e,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f,
+	0x6e, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x49, 0x64, 0x12, 0x51, 0x0a, 0x10, 0x47, 0x65, 0x74, 0x51,
+	0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x12, 0x19, 0x2e, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e,
+	0x49, 0x6e, 0x70, 0x75, 0x74, 0x49, 0x64, 0x1a, 0x22, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69,
+	0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e,
+	0x70, 0x75, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x89, 0x01, 0x0a, 0x20,
+	0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e,
+	0x70, 0x75, 0x74, 0x73, 0x42, 0x79, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64,
+	0x12, 0x31, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x41,
+	0x6c, 0x6c, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x73,
+	0x42, 0x79, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x1a, 0x32, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x47,
+	0x65, 0x74, 0x41, 0x6c, 0x6c, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x70,
+	0x75, 0x74, 0x73, 0x42, 0x79, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x4b, 0x0a, 0x13, 0x55, 0x70, 0x64, 0x61, 0x74,
+	0x65, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x12, 0x24,
+	0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65,
+	0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x0e, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e,
+	0x56, 0x6f, 0x69, 0x64, 0x12, 0x4b, 0x0a, 0x13, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x51, 0x75,
+	0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x12, 0x24, 0x2e, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x51, 0x75, 0x65,
+	0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x1a, 0x0e, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x56, 0x6f, 0x69,
+	0x64, 0x32, 0xa0, 0x03, 0x0a, 0x0f, 0x54, 0x65, 0x73, 0x74, 0x43, 0x61, 0x73, 0x65, 0x53, 0x65,
+	0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x47, 0x0a, 0x0e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x54,
+	0x65, 0x73, 0x74, 0x43, 0x61, 0x73, 0x65, 0x12, 0x1f, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69,
+	0x6f, 0x6e, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x54, 0x65, 0x73, 0x74, 0x43, 0x61, 0x73,
+	0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x14, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x69, 0x6f, 0x6e, 0x2e, 0x54, 0x65, 0x73, 0x74, 0x43, 0x61, 0x73, 0x65, 0x49, 0x64, 0x12, 0x42,
+	0x0a, 0x0b, 0x47, 0x65, 0x74, 0x54, 0x65, 0x73, 0x74, 0x43, 0x61, 0x73, 0x65, 0x12, 0x14, 0x2e,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x54, 0x65, 0x73, 0x74, 0x43, 0x61, 0x73,
+	0x65, 0x49, 0x64, 0x1a, 0x1d, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x47,
+	0x65, 0x74, 0x54, 0x65, 0x73, 0x74, 0x43, 0x61, 0x73, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x12, 0x7a, 0x0a, 0x1b, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x54, 0x65, 0x73, 0x74,
+	0x43, 0x61, 0x73, 0x65, 0x73, 0x42, 0x79, 0x51, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49,
+	0x64, 0x12, 0x2c, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74,
+	0x41, 0x6c, 0x6c, 0x54, 0x65, 0x73, 0x74, 0x43, 0x61, 0x73, 0x65, 0x73, 0x42, 0x79, 0x51, 0x75,
+	0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
+	0x2d, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x41, 0x6c,
+	0x6c, 0x54, 0x65, 0x73, 0x74, 0x43, 0x61, 0x73, 0x65, 0x73, 0x42, 0x79, 0x51, 0x75, 0x65, 0x73,
+	0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x41,
+	0x0a, 0x0e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x54, 0x65, 0x73, 0x74, 0x43, 0x61, 0x73, 0x65,
+	0x12, 0x1f, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x55, 0x70, 0x64, 0x61,
+	0x74, 0x65, 0x54, 0x65, 0x73, 0x74, 0x43, 0x61, 0x73, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x1a, 0x0e, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x56, 0x6f, 0x69,
+	0x64, 0x12, 0x41, 0x0a, 0x0e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x54, 0x65, 0x73, 0x74, 0x43,
+	0x61, 0x73, 0x65, 0x12, 0x1f, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x44,
+	0x65, 0x6c, 0x65, 0x74, 0x65, 0x54, 0x65, 0x73, 0x74, 0x43, 0x61, 0x73, 0x65, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x0e, 0x2e, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x2e,
+	0x56, 0x6f, 0x69, 0x64, 0x42, 0x13, 0x5a, 0x11, 0x67, 0x65, 0x6e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x2f, 0x71, 0x75, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x33,
 }
 
 var (
@@ -2411,7 +2584,7 @@ func file_question_proto_rawDescGZIP() []byte {
 	return file_question_proto_rawDescData
 }
 
-var file_question_proto_msgTypes = make([]protoimpl.MessageInfo, 31)
+var file_question_proto_msgTypes = make([]protoimpl.MessageInfo, 34)
 var file_question_proto_goTypes = []any{
 	(*CreateQuestionRequest)(nil),                     // 0: question.CreateQuestionRequest
 	(*Void)(nil),                                      // 1: question.Void
@@ -2423,84 +2596,90 @@ var file_question_proto_goTypes = []any{
 	(*DeleteQuestionRequest)(nil),                     // 7: question.DeleteQuestionRequest
 	(*UploadImageQuestionRequest)(nil),                // 8: question.UploadImageQuestionRequest
 	(*DeleteImageQuestionRequest)(nil),                // 9: question.DeleteImageQuestionRequest
-	(*CreateQuestionOutputRequest)(nil),               // 10: question.CreateQuestionOutputRequest
-	(*QuestionOutputId)(nil),                          // 11: question.QuestionOutputId
-	(*GetAllQuestionOutputsByQuestionIdRequest)(nil),  // 12: question.GetAllQuestionOutputsByQuestionIdRequest
-	(*GetAllQuestionOutputsByQuestionIdResponse)(nil), // 13: question.GetAllQuestionOutputsByQuestionIdResponse
-	(*GetQuestionOutputResponse)(nil),                 // 14: question.GetQuestionOutputResponse
-	(*UpdateQuestionOutputRequest)(nil),               // 15: question.UpdateQuestionOutputRequest
-	(*DeleteQuestionOutputRequest)(nil),               // 16: question.DeleteQuestionOutputRequest
-	(*CreateQuestionInputRequest)(nil),                // 17: question.CreateQuestionInputRequest
-	(*QuestionInputId)(nil),                           // 18: question.QuestionInputId
-	(*GetQuestionInputResponse)(nil),                  // 19: question.GetQuestionInputResponse
-	(*GetAllQuestionInputsByQuestionIdRequest)(nil),   // 20: question.GetAllQuestionInputsByQuestionIdRequest
-	(*GetAllQuestionInputsByQuestionIdResponse)(nil),  // 21: question.GetAllQuestionInputsByQuestionIdResponse
-	(*UpdateQuestionInputRequest)(nil),                // 22: question.UpdateQuestionInputRequest
-	(*DeleteQuestionInputRequest)(nil),                // 23: question.DeleteQuestionInputRequest
-	(*CreateTestCaseRequest)(nil),                     // 24: question.CreateTestCaseRequest
-	(*TestCaseId)(nil),                                // 25: question.TestCaseId
-	(*GetTestCaseResponse)(nil),                       // 26: question.GetTestCaseResponse
-	(*GetAllTestCasesByQuestionIdRequest)(nil),        // 27: question.GetAllTestCasesByQuestionIdRequest
-	(*GetAllTestCasesByQuestionIdResponse)(nil),       // 28: question.GetAllTestCasesByQuestionIdResponse
-	(*UpdateTestCaseRequest)(nil),                     // 29: question.UpdateTestCaseRequest
-	(*DeleteTestCaseRequest)(nil),                     // 30: question.DeleteTestCaseRequest
+	(*GetQuestionRandomlyRequest)(nil),                // 10: question.GetQuestionRandomlyRequest
+	(*CreateQuestionOutputRequest)(nil),               // 11: question.CreateQuestionOutputRequest
+	(*QuestionOutputId)(nil),                          // 12: question.QuestionOutputId
+	(*GetAllQuestionOutputsByQuestionIdRequest)(nil),  // 13: question.GetAllQuestionOutputsByQuestionIdRequest
+	(*GetAllQuestionOutputsByQuestionIdResponse)(nil), // 14: question.GetAllQuestionOutputsByQuestionIdResponse
+	(*GetQuestionOutputResponse)(nil),                 // 15: question.GetQuestionOutputResponse
+	(*UpdateQuestionOutputRequest)(nil),               // 16: question.UpdateQuestionOutputRequest
+	(*DeleteQuestionOutputRequest)(nil),               // 17: question.DeleteQuestionOutputRequest
+	(*GetQUestionOutPutByInputIdRequest)(nil),         // 18: question.GetQUestionOutPutByInputIdRequest
+	(*GetQUestionOutPutByInputIdRes)(nil),             // 19: question.GetQUestionOutPutByInputIdRes
+	(*CreateQuestionInputRequest)(nil),                // 20: question.CreateQuestionInputRequest
+	(*QuestionInputId)(nil),                           // 21: question.QuestionInputId
+	(*GetQuestionInputResponse)(nil),                  // 22: question.GetQuestionInputResponse
+	(*GetAllQuestionInputsByQuestionIdRequest)(nil),   // 23: question.GetAllQuestionInputsByQuestionIdRequest
+	(*GetAllQuestionInputsByQuestionIdResponse)(nil),  // 24: question.GetAllQuestionInputsByQuestionIdResponse
+	(*UpdateQuestionInputRequest)(nil),                // 25: question.UpdateQuestionInputRequest
+	(*DeleteQuestionInputRequest)(nil),                // 26: question.DeleteQuestionInputRequest
+	(*CreateTestCaseRequest)(nil),                     // 27: question.CreateTestCaseRequest
+	(*TestCaseId)(nil),                                // 28: question.TestCaseId
+	(*GetTestCaseResponse)(nil),                       // 29: question.GetTestCaseResponse
+	(*GetAllTestCasesByQuestionIdRequest)(nil),        // 30: question.GetAllTestCasesByQuestionIdRequest
+	(*GetAllTestCasesByQuestionIdResponse)(nil),       // 31: question.GetAllTestCasesByQuestionIdResponse
+	(*UpdateTestCaseRequest)(nil),                     // 32: question.UpdateTestCaseRequest
+	(*DeleteTestCaseRequest)(nil),                     // 33: question.DeleteTestCaseRequest
 }
 var file_question_proto_depIdxs = []int32{
 	3,  // 0: question.GetAllQuestionsResponse.questions:type_name -> question.GetQuestionResponse
-	14, // 1: question.GetAllQuestionOutputsByQuestionIdResponse.question_outputs:type_name -> question.GetQuestionOutputResponse
-	19, // 2: question.GetAllQuestionInputsByQuestionIdResponse.question_inputs:type_name -> question.GetQuestionInputResponse
-	26, // 3: question.GetAllTestCasesByQuestionIdResponse.test_cases:type_name -> question.GetTestCaseResponse
-	0,  // 4: question.QuestionService.CreateQuestion:input_type -> question.CreateQuestionRequest
-	2,  // 5: question.QuestionService.GetQuestion:input_type -> question.QuestionId
-	4,  // 6: question.QuestionService.GetAllQuestions:input_type -> question.GetAllQuestionsRequest
-	6,  // 7: question.QuestionService.UpdateQuestion:input_type -> question.UpdateQuestionRequest
-	7,  // 8: question.QuestionService.DeleteQuestion:input_type -> question.DeleteQuestionRequest
-	8,  // 9: question.QuestionService.UploadImageQuestion:input_type -> question.UploadImageQuestionRequest
-	9,  // 10: question.QuestionService.DeleteImageQuestion:input_type -> question.DeleteImageQuestionRequest
-	2,  // 11: question.QuestionService.IsQuestionExist:input_type -> question.QuestionId
-	10, // 12: question.OutputService.CreateQuestionOutput:input_type -> question.CreateQuestionOutputRequest
-	11, // 13: question.OutputService.GetQuestionOutput:input_type -> question.QuestionOutputId
-	12, // 14: question.OutputService.GetAllQuestionOutputsByQuestionId:input_type -> question.GetAllQuestionOutputsByQuestionIdRequest
-	15, // 15: question.OutputService.UpdateQuestionOutput:input_type -> question.UpdateQuestionOutputRequest
-	16, // 16: question.OutputService.DeleteQuestionOutput:input_type -> question.DeleteQuestionOutputRequest
-	17, // 17: question.InputService.CreateQuestionInput:input_type -> question.CreateQuestionInputRequest
-	18, // 18: question.InputService.GetQuestionInput:input_type -> question.QuestionInputId
-	20, // 19: question.InputService.GetAllQuestionInputsByQuestionId:input_type -> question.GetAllQuestionInputsByQuestionIdRequest
-	22, // 20: question.InputService.UpdateQuestionInput:input_type -> question.UpdateQuestionInputRequest
-	23, // 21: question.InputService.DeleteQuestionInput:input_type -> question.DeleteQuestionInputRequest
-	24, // 22: question.TestCaseService.CreateTestCase:input_type -> question.CreateTestCaseRequest
-	25, // 23: question.TestCaseService.GetTestCase:input_type -> question.TestCaseId
-	27, // 24: question.TestCaseService.GetAllTestCasesByQuestionId:input_type -> question.GetAllTestCasesByQuestionIdRequest
-	29, // 25: question.TestCaseService.UpdateTestCase:input_type -> question.UpdateTestCaseRequest
-	30, // 26: question.TestCaseService.DeleteTestCase:input_type -> question.DeleteTestCaseRequest
-	2,  // 27: question.QuestionService.CreateQuestion:output_type -> question.QuestionId
-	3,  // 28: question.QuestionService.GetQuestion:output_type -> question.GetQuestionResponse
-	5,  // 29: question.QuestionService.GetAllQuestions:output_type -> question.GetAllQuestionsResponse
-	1,  // 30: question.QuestionService.UpdateQuestion:output_type -> question.Void
-	1,  // 31: question.QuestionService.DeleteQuestion:output_type -> question.Void
-	1,  // 32: question.QuestionService.UploadImageQuestion:output_type -> question.Void
-	1,  // 33: question.QuestionService.DeleteImageQuestion:output_type -> question.Void
-	1,  // 34: question.QuestionService.IsQuestionExist:output_type -> question.Void
-	11, // 35: question.OutputService.CreateQuestionOutput:output_type -> question.QuestionOutputId
-	14, // 36: question.OutputService.GetQuestionOutput:output_type -> question.GetQuestionOutputResponse
-	13, // 37: question.OutputService.GetAllQuestionOutputsByQuestionId:output_type -> question.GetAllQuestionOutputsByQuestionIdResponse
-	1,  // 38: question.OutputService.UpdateQuestionOutput:output_type -> question.Void
-	1,  // 39: question.OutputService.DeleteQuestionOutput:output_type -> question.Void
-	18, // 40: question.InputService.CreateQuestionInput:output_type -> question.QuestionInputId
-	19, // 41: question.InputService.GetQuestionInput:output_type -> question.GetQuestionInputResponse
-	21, // 42: question.InputService.GetAllQuestionInputsByQuestionId:output_type -> question.GetAllQuestionInputsByQuestionIdResponse
-	1,  // 43: question.InputService.UpdateQuestionInput:output_type -> question.Void
-	1,  // 44: question.InputService.DeleteQuestionInput:output_type -> question.Void
-	25, // 45: question.TestCaseService.CreateTestCase:output_type -> question.TestCaseId
-	26, // 46: question.TestCaseService.GetTestCase:output_type -> question.GetTestCaseResponse
-	28, // 47: question.TestCaseService.GetAllTestCasesByQuestionId:output_type -> question.GetAllTestCasesByQuestionIdResponse
-	1,  // 48: question.TestCaseService.UpdateTestCase:output_type -> question.Void
-	1,  // 49: question.TestCaseService.DeleteTestCase:output_type -> question.Void
-	27, // [27:50] is the sub-list for method output_type
-	4,  // [4:27] is the sub-list for method input_type
-	4,  // [4:4] is the sub-list for extension type_name
-	4,  // [4:4] is the sub-list for extension extendee
-	0,  // [0:4] is the sub-list for field type_name
+	15, // 1: question.GetAllQuestionOutputsByQuestionIdResponse.question_outputs:type_name -> question.GetQuestionOutputResponse
+	15, // 2: question.GetQUestionOutPutByInputIdRes.question_outputs:type_name -> question.GetQuestionOutputResponse
+	22, // 3: question.GetAllQuestionInputsByQuestionIdResponse.question_inputs:type_name -> question.GetQuestionInputResponse
+	29, // 4: question.GetAllTestCasesByQuestionIdResponse.test_cases:type_name -> question.GetTestCaseResponse
+	0,  // 5: question.QuestionService.CreateQuestion:input_type -> question.CreateQuestionRequest
+	2,  // 6: question.QuestionService.GetQuestion:input_type -> question.QuestionId
+	4,  // 7: question.QuestionService.GetAllQuestions:input_type -> question.GetAllQuestionsRequest
+	6,  // 8: question.QuestionService.UpdateQuestion:input_type -> question.UpdateQuestionRequest
+	7,  // 9: question.QuestionService.DeleteQuestion:input_type -> question.DeleteQuestionRequest
+	8,  // 10: question.QuestionService.UploadImageQuestion:input_type -> question.UploadImageQuestionRequest
+	9,  // 11: question.QuestionService.DeleteImageQuestion:input_type -> question.DeleteImageQuestionRequest
+	2,  // 12: question.QuestionService.IsQuestionExist:input_type -> question.QuestionId
+	11, // 13: question.OutputService.CreateQuestionOutput:input_type -> question.CreateQuestionOutputRequest
+	12, // 14: question.OutputService.GetQuestionOutput:input_type -> question.QuestionOutputId
+	13, // 15: question.OutputService.GetAllQuestionOutputsByQuestionId:input_type -> question.GetAllQuestionOutputsByQuestionIdRequest
+	16, // 16: question.OutputService.UpdateQuestionOutput:input_type -> question.UpdateQuestionOutputRequest
+	17, // 17: question.OutputService.DeleteQuestionOutput:input_type -> question.DeleteQuestionOutputRequest
+	18, // 18: question.OutputService.GetQUestionOutPutByInputId:input_type -> question.GetQUestionOutPutByInputIdRequest
+	20, // 19: question.InputService.CreateQuestionInput:input_type -> question.CreateQuestionInputRequest
+	21, // 20: question.InputService.GetQuestionInput:input_type -> question.QuestionInputId
+	23, // 21: question.InputService.GetAllQuestionInputsByQuestionId:input_type -> question.GetAllQuestionInputsByQuestionIdRequest
+	25, // 22: question.InputService.UpdateQuestionInput:input_type -> question.UpdateQuestionInputRequest
+	26, // 23: question.InputService.DeleteQuestionInput:input_type -> question.DeleteQuestionInputRequest
+	27, // 24: question.TestCaseService.CreateTestCase:input_type -> question.CreateTestCaseRequest
+	28, // 25: question.TestCaseService.GetTestCase:input_type -> question.TestCaseId
+	30, // 26: question.TestCaseService.GetAllTestCasesByQuestionId:input_type -> question.GetAllTestCasesByQuestionIdRequest
+	32, // 27: question.TestCaseService.UpdateTestCase:input_type -> question.UpdateTestCaseRequest
+	33, // 28: question.TestCaseService.DeleteTestCase:input_type -> question.DeleteTestCaseRequest
+	2,  // 29: question.QuestionService.CreateQuestion:output_type -> question.QuestionId
+	3,  // 30: question.QuestionService.GetQuestion:output_type -> question.GetQuestionResponse
+	5,  // 31: question.QuestionService.GetAllQuestions:output_type -> question.GetAllQuestionsResponse
+	1,  // 32: question.QuestionService.UpdateQuestion:output_type -> question.Void
+	1,  // 33: question.QuestionService.DeleteQuestion:output_type -> question.Void
+	1,  // 34: question.QuestionService.UploadImageQuestion:output_type -> question.Void
+	1,  // 35: question.QuestionService.DeleteImageQuestion:output_type -> question.Void
+	1,  // 36: question.QuestionService.IsQuestionExist:output_type -> question.Void
+	12, // 37: question.OutputService.CreateQuestionOutput:output_type -> question.QuestionOutputId
+	15, // 38: question.OutputService.GetQuestionOutput:output_type -> question.GetQuestionOutputResponse
+	14, // 39: question.OutputService.GetAllQuestionOutputsByQuestionId:output_type -> question.GetAllQuestionOutputsByQuestionIdResponse
+	1,  // 40: question.OutputService.UpdateQuestionOutput:output_type -> question.Void
+	1,  // 41: question.OutputService.DeleteQuestionOutput:output_type -> question.Void
+	19, // 42: question.OutputService.GetQUestionOutPutByInputId:output_type -> question.GetQUestionOutPutByInputIdRes
+	21, // 43: question.InputService.CreateQuestionInput:output_type -> question.QuestionInputId
+	22, // 44: question.InputService.GetQuestionInput:output_type -> question.GetQuestionInputResponse
+	24, // 45: question.InputService.GetAllQuestionInputsByQuestionId:output_type -> question.GetAllQuestionInputsByQuestionIdResponse
+	1,  // 46: question.InputService.UpdateQuestionInput:output_type -> question.Void
+	1,  // 47: question.InputService.DeleteQuestionInput:output_type -> question.Void
+	28, // 48: question.TestCaseService.CreateTestCase:output_type -> question.TestCaseId
+	29, // 49: question.TestCaseService.GetTestCase:output_type -> question.GetTestCaseResponse
+	31, // 50: question.TestCaseService.GetAllTestCasesByQuestionId:output_type -> question.GetAllTestCasesByQuestionIdResponse
+	1,  // 51: question.TestCaseService.UpdateTestCase:output_type -> question.Void
+	1,  // 52: question.TestCaseService.DeleteTestCase:output_type -> question.Void
+	29, // [29:53] is the sub-list for method output_type
+	5,  // [5:29] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_question_proto_init() }
@@ -2630,7 +2809,7 @@ func file_question_proto_init() {
 			}
 		}
 		file_question_proto_msgTypes[10].Exporter = func(v any, i int) any {
-			switch v := v.(*CreateQuestionOutputRequest); i {
+			switch v := v.(*GetQuestionRandomlyRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2642,7 +2821,7 @@ func file_question_proto_init() {
 			}
 		}
 		file_question_proto_msgTypes[11].Exporter = func(v any, i int) any {
-			switch v := v.(*QuestionOutputId); i {
+			switch v := v.(*CreateQuestionOutputRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2654,7 +2833,7 @@ func file_question_proto_init() {
 			}
 		}
 		file_question_proto_msgTypes[12].Exporter = func(v any, i int) any {
-			switch v := v.(*GetAllQuestionOutputsByQuestionIdRequest); i {
+			switch v := v.(*QuestionOutputId); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2666,7 +2845,7 @@ func file_question_proto_init() {
 			}
 		}
 		file_question_proto_msgTypes[13].Exporter = func(v any, i int) any {
-			switch v := v.(*GetAllQuestionOutputsByQuestionIdResponse); i {
+			switch v := v.(*GetAllQuestionOutputsByQuestionIdRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2678,7 +2857,7 @@ func file_question_proto_init() {
 			}
 		}
 		file_question_proto_msgTypes[14].Exporter = func(v any, i int) any {
-			switch v := v.(*GetQuestionOutputResponse); i {
+			switch v := v.(*GetAllQuestionOutputsByQuestionIdResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2690,7 +2869,7 @@ func file_question_proto_init() {
 			}
 		}
 		file_question_proto_msgTypes[15].Exporter = func(v any, i int) any {
-			switch v := v.(*UpdateQuestionOutputRequest); i {
+			switch v := v.(*GetQuestionOutputResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2702,7 +2881,7 @@ func file_question_proto_init() {
 			}
 		}
 		file_question_proto_msgTypes[16].Exporter = func(v any, i int) any {
-			switch v := v.(*DeleteQuestionOutputRequest); i {
+			switch v := v.(*UpdateQuestionOutputRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2714,7 +2893,7 @@ func file_question_proto_init() {
 			}
 		}
 		file_question_proto_msgTypes[17].Exporter = func(v any, i int) any {
-			switch v := v.(*CreateQuestionInputRequest); i {
+			switch v := v.(*DeleteQuestionOutputRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2726,7 +2905,7 @@ func file_question_proto_init() {
 			}
 		}
 		file_question_proto_msgTypes[18].Exporter = func(v any, i int) any {
-			switch v := v.(*QuestionInputId); i {
+			switch v := v.(*GetQUestionOutPutByInputIdRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2738,7 +2917,7 @@ func file_question_proto_init() {
 			}
 		}
 		file_question_proto_msgTypes[19].Exporter = func(v any, i int) any {
-			switch v := v.(*GetQuestionInputResponse); i {
+			switch v := v.(*GetQUestionOutPutByInputIdRes); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2750,7 +2929,7 @@ func file_question_proto_init() {
 			}
 		}
 		file_question_proto_msgTypes[20].Exporter = func(v any, i int) any {
-			switch v := v.(*GetAllQuestionInputsByQuestionIdRequest); i {
+			switch v := v.(*CreateQuestionInputRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2762,7 +2941,7 @@ func file_question_proto_init() {
 			}
 		}
 		file_question_proto_msgTypes[21].Exporter = func(v any, i int) any {
-			switch v := v.(*GetAllQuestionInputsByQuestionIdResponse); i {
+			switch v := v.(*QuestionInputId); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2774,7 +2953,7 @@ func file_question_proto_init() {
 			}
 		}
 		file_question_proto_msgTypes[22].Exporter = func(v any, i int) any {
-			switch v := v.(*UpdateQuestionInputRequest); i {
+			switch v := v.(*GetQuestionInputResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2786,7 +2965,7 @@ func file_question_proto_init() {
 			}
 		}
 		file_question_proto_msgTypes[23].Exporter = func(v any, i int) any {
-			switch v := v.(*DeleteQuestionInputRequest); i {
+			switch v := v.(*GetAllQuestionInputsByQuestionIdRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2798,7 +2977,7 @@ func file_question_proto_init() {
 			}
 		}
 		file_question_proto_msgTypes[24].Exporter = func(v any, i int) any {
-			switch v := v.(*CreateTestCaseRequest); i {
+			switch v := v.(*GetAllQuestionInputsByQuestionIdResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2810,7 +2989,7 @@ func file_question_proto_init() {
 			}
 		}
 		file_question_proto_msgTypes[25].Exporter = func(v any, i int) any {
-			switch v := v.(*TestCaseId); i {
+			switch v := v.(*UpdateQuestionInputRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2822,7 +3001,7 @@ func file_question_proto_init() {
 			}
 		}
 		file_question_proto_msgTypes[26].Exporter = func(v any, i int) any {
-			switch v := v.(*GetTestCaseResponse); i {
+			switch v := v.(*DeleteQuestionInputRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2834,7 +3013,7 @@ func file_question_proto_init() {
 			}
 		}
 		file_question_proto_msgTypes[27].Exporter = func(v any, i int) any {
-			switch v := v.(*GetAllTestCasesByQuestionIdRequest); i {
+			switch v := v.(*CreateTestCaseRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2846,7 +3025,7 @@ func file_question_proto_init() {
 			}
 		}
 		file_question_proto_msgTypes[28].Exporter = func(v any, i int) any {
-			switch v := v.(*GetAllTestCasesByQuestionIdResponse); i {
+			switch v := v.(*TestCaseId); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2858,7 +3037,7 @@ func file_question_proto_init() {
 			}
 		}
 		file_question_proto_msgTypes[29].Exporter = func(v any, i int) any {
-			switch v := v.(*UpdateTestCaseRequest); i {
+			switch v := v.(*GetTestCaseResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2870,6 +3049,42 @@ func file_question_proto_init() {
 			}
 		}
 		file_question_proto_msgTypes[30].Exporter = func(v any, i int) any {
+			switch v := v.(*GetAllTestCasesByQuestionIdRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_question_proto_msgTypes[31].Exporter = func(v any, i int) any {
+			switch v := v.(*GetAllTestCasesByQuestionIdResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_question_proto_msgTypes[32].Exporter = func(v any, i int) any {
+			switch v := v.(*UpdateTestCaseRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_question_proto_msgTypes[33].Exporter = func(v any, i int) any {
 			switch v := v.(*DeleteTestCaseRequest); i {
 			case 0:
 				return &v.state
@@ -2888,7 +3103,7 @@ func file_question_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_question_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   31,
+			NumMessages:   34,
 			NumExtensions: 0,
 			NumServices:   4,
 		},
