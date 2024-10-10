@@ -14,7 +14,6 @@ import (
 )
 
 func sendRunRequest(runReq model.ApiRequest, Log *slog.Logger) (*model.RunResponse, error) {
-	// API URL
 	apiURL := "https://capi.robocontest.uz/run"
 
 	// Request body'ni JSON formatga o'tkazish
