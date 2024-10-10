@@ -74,7 +74,7 @@ func (h *Handler) Check(c *gin.Context) {
 	}
 	runResp, err := sendRunRequest(apiReq, h.Log)
 	if err != nil {
-		h.Log.Error("Robocontest api bilan bog'lanmadi: %v", err)
+		h.Log.Error(fmt.Sprintf("Robocontest api bilan bog'lanmadi: %v", err))
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to send request"})
 		return
 	}
