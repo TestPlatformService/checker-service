@@ -17,13 +17,11 @@ func sendRunRequest(runReq model.ApiRequest, Log *slog.Logger) (*model.RunRespon
 	apiURL := "https://capi.robocontest.uz/run"
 
 	// Request body'ni JSON formatga o'tkazish
-	Log.Info(fmt.Sprintf("Request: %v", runReq))
 	reqBody, err := json.Marshal(runReq)
 	if err != nil {
 		Log.Error(fmt.Sprintf("Ma'lumotlarni jsonga o'girishda xatolik: %v", err))
 		return nil, err
 	}
-	Log.Info("next\n")
 
 	// HTTP POST so'rovini yuborish
 	resp, err := http.Post(apiURL, "application/json", bytes.NewBuffer(reqBody))
@@ -42,6 +40,7 @@ func sendRunRequest(runReq model.ApiRequest, Log *slog.Logger) (*model.RunRespon
 
 	// Javobni JSON formatga o'girish
 	var runResp model.RunResponse
+	Log.Info(fmt.Sprintf("%v", runResp))
 	if err := json.Unmarshal(body, &runResp); err != nil {
 		Log.Error(fmt.Sprintf("Ma'lumotlarni jsonga o'girishda xatolik: %v", err))
 		return nil, err
