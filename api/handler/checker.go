@@ -5,7 +5,7 @@ import (
 	"checker/model"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log/slog"
 	"net/http"
 	"time"
@@ -33,7 +33,7 @@ func sendRunRequest(runReq model.ApiRequest, Log *slog.Logger) (*model.RunRespon
 	defer resp.Body.Close()
 
 	// Javobni o'qish
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		Log.Error(fmt.Sprintf("Responseni o'qishda xatolik: %v", err))
 		return nil, err
@@ -59,19 +59,19 @@ func (h *Handler) Check(c *gin.Context) {
 	}
 
 	questionInfo, err := h.Service.QuestionInfo(req.QuestionId)
-	if err != nil{
+	if err != nil {
 		h.Log.Error(fmt.Sprintf("Question ma'lumotlarini olishda xatolik: %v", err))
-		c.JSON(http.StatusBadRequest, gin.H{"Message":"Question ma'lumotlarini olishda xatolik"})
-		return 
+		c.JSON(http.StatusBadRequest, gin.H{"Message": "Question ma'lumotlarini olishda xatolik"})
+		return
 	}
 
 	// API ga request yuborish
 	var apiReq = model.ApiRequest{
-		Code: req.Code,
-		Lang: req.Lang,
+		Code:        req.Code,
+		Lang:        req.Lang,
 		MemoryLimit: questionInfo.MemoryLimit,
-		TimeLimit: questionInfo.TimeLimit,
-		IO: questionInfo.IO,
+		TimeLimit:   questionInfo.TimeLimit,
+		IO:          questionInfo.IO,
 	}
 	runResp, err := sendRunRequest(apiReq, h.Log)
 	if err != nil {
