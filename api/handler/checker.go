@@ -20,7 +20,7 @@ func sendRunRequest(runReq model.ApiRequest, Log *slog.Logger) (*model.RunRespon
 	Log.Info(fmt.Sprintf("Request: %v", runReq))
 	reqBody, err := json.Marshal(runReq)
 	if err != nil {
-		Log.Error(fmt.Sprintf("Ma'lumotlarni jsonga o'girishda xatolik: %v", err))
+		Log.Error(fmt.Sprintf("Ma'lumotlarni jsonga o'girishda xatolik1: %v", err))
 		return nil, err
 	}
 
@@ -43,7 +43,7 @@ func sendRunRequest(runReq model.ApiRequest, Log *slog.Logger) (*model.RunRespon
 	var runResp model.RunResponse
 	Log.Info(fmt.Sprintf("%v", runResp))
 	if err := json.Unmarshal(body, &runResp); err != nil {
-		Log.Error(fmt.Sprintf("Ma'lumotlarni jsonga o'girishda xatolik: %v", err))
+		Log.Error(fmt.Sprintf("Ma'lumotlarni jsonga o'girishda xatolik2: %v", err))
 		return nil, err
 	}
 
