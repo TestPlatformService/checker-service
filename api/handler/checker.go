@@ -13,7 +13,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func sendRunRequest(runReq model.ApiRequest, Log *slog.Logger) (*model.RunResponse, error) {
+func sendRunRequest(runReq model.ApiRequest, Log *slog.Logger) ([]model.RunResponse, error) {
 	apiURL := "https://capi.robocontest.uz/run"
 
 	// Request body'ni JSON formatga o'tkazish
@@ -32,22 +32,37 @@ func sendRunRequest(runReq model.ApiRequest, Log *slog.Logger) (*model.RunRespon
 	}
 	defer resp.Body.Close()
 
-	// Javobni o'qish
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		Log.Error(fmt.Sprintf("Responseni o'qishda xatolik: %v", err))
-		return nil, err
+	if resp.StatusCode != http.StatusOK {
+		Log.Error(fmt.Sprintf("POST so'rovining javobi xato: %v", resp.Status))
+		return nil, fmt.Errorf("received non-OK HTTP status: %s", resp.Status)
 	}
 
-	// Javobni JSON formatga o'girish
-	var runResp model.RunResponse
-	Log.Info(fmt.Sprintf("%v", runResp))
-	if err := json.Unmarshal(body, &runResp); err != nil {
-		Log.Error(fmt.Sprintf("Ma'lumotlarni jsonga o'girishda xatolik2: %v", err))
-		return nil, err
+	// SSE oqimini o'qish
+	var runResponses []model.RunResponse
+	decoder := json.NewDecoder(resp.Body)
+
+	for {
+		// SSE da har bir 'data' hodisasini o'qish
+		var event map[string]json.RawMessage
+		if err := decoder.Decode(&event); err == io.EOF {
+			break // Barcha ma'lumotlar o'qildi
+		} else if err != nil {
+			Log.Error(fmt.Sprintf("SSE oqimini o'qishda xatolik: %v", err))
+			return nil, err
+		}
+
+		// Agar 'data' kaliti mavjud bo'lsa, uni pars qilish
+		if rawData, found := event["data"]; found {
+			var runResp model.RunResponse
+			if err := json.Unmarshal(rawData, &runResp); err != nil {
+				Log.Error(fmt.Sprintf("Ma'lumotlarni jsonga o'girishda xatolik2: %v", err))
+				return nil, err
+			}
+			runResponses = append(runResponses, runResp)
+		}
 	}
 
-	return &runResp, nil
+	return runResponses, nil
 }
 
 func (h *Handler) Check(c *gin.Context) {
@@ -65,7 +80,7 @@ func (h *Handler) Check(c *gin.Context) {
 		return
 	}
 
-	// API ga request yuborish
+	// Prepare API request
 	var apiReq = model.ApiRequest{
 		Code:        req.Code,
 		Lang:        req.Lang,
@@ -73,30 +88,42 @@ func (h *Handler) Check(c *gin.Context) {
 		TimeLimit:   questionInfo.TimeLimit,
 		IO:          questionInfo.IO,
 	}
-	runResp, err := sendRunRequest(apiReq, h.Log)
-	if err != nil {
-		h.Log.Error(fmt.Sprintf("Robocontest api bilan bog'lanmadi: %v", err))
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to send request"})
-		return
-	}
 
-	// SSE uchun javob sarlavhalarini sozlash
+	// SSE Headers
 	c.Writer.Header().Set("Content-Type", "text/event-stream")
 	c.Writer.Header().Set("Cache-Control", "no-cache")
 	c.Writer.Header().Set("Connection", "keep-alive")
+	c.Writer.Header().Set("X-Accel-Buffering", "no") // Disable buffering for SSE
 
-	// Tekshiruv jarayonini o'rnatish
+	// Start the simulated checking process (or fetch from an actual external process)
 	for i := 1; i <= 3; i++ {
-		time.Sleep(2 * time.Second) // Jarayonni simulatsiya qilish
+		// Simulate an interval between steps
+		time.Sleep(2 * time.Second)
 
-		// Tekshiruv natijalarini SSE orqali yuborish
-		result := fmt.Sprintf(`{"event":"status","payload":{"status":%d,"test":"%d","message":"%s"}}`, i, i, runResp.Message)
-		fmt.Fprintf(c.Writer, "id: %s\n", time.Now().Format(time.RFC3339Nano))
-		fmt.Fprintf(c.Writer, "data: %s\n\n", result)
-		c.Writer.(http.Flusher).Flush()
+		// Send request to external API and receive a slice of responses
+		runResp, err := sendRunRequest(apiReq, h.Log)
+		if err != nil {
+			h.Log.Error(fmt.Sprintf("Robocontest API bilan bog'lanmadi: %v", err))
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to send request"})
+			return
+		}
+
+		// Loop through each response in the slice and send SSE for each
+		for _, response := range runResp {
+			// Send an update to the client
+			result := fmt.Sprintf(`{"event":"status","payload":{"status":"%s","message":"%s"}}`, response.Status, response.Message)
+			fmt.Fprintf(c.Writer, "id: %s\n", time.Now().Format(time.RFC3339Nano))
+			fmt.Fprintf(c.Writer, "data: %s\n\n", result)
+			c.Writer.(http.Flusher).Flush()
+
+			// If Status == "3", break the loop early (assuming "3" means completed)
+			if response.Status == "3" {
+				break
+			}
+		}
 	}
 
-	// Tekshiruv yakunlanganda SSE stream'ini yopish
+	// Close the SSE stream when the process is done
 	fmt.Fprint(c.Writer, "event: close\ndata: end\n\n")
 	c.Writer.(http.Flusher).Flush()
 }
