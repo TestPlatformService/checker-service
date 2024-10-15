@@ -38,7 +38,7 @@ type Payload struct {
 
 // EventResponse represents the response structure for an event
 type EventResponse struct {
-	EventId string  `json:"event_id"`
+	Event   string  `json:"event"`
 	Payload Payload `json:"payload"`
 }
 
