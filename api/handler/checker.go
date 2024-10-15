@@ -1,19 +1,19 @@
 package handler
 
 import (
+	"bufio"
 	"bytes"
 	"checker/model"
 	"encoding/json"
 	"fmt"
-	"io"
 	"log/slog"
 	"net/http"
+	"strings"
 	"time"
 
 	"github.com/gin-gonic/gin"
 )
 
-// sendRunRequest processes the API request and returns a slice of ResponsePayload
 func sendRunRequest(runReq model.ApiRequest, Log *slog.Logger) ([]model.Payload, error) {
 	apiURL := "https://capi.robocontest.uz/run"
 
@@ -38,51 +38,40 @@ func sendRunRequest(runReq model.ApiRequest, Log *slog.Logger) ([]model.Payload,
 		return nil, fmt.Errorf("received non-OK HTTP status: %s", resp.Status)
 	}
 
-	// SSE response processing
+	// SSE response processing using bufio.Scanner
 	var runResponses []model.Payload
-	decoder := json.NewDecoder(resp.Body)
+	scanner := bufio.NewScanner(resp.Body)
 
-	for {
-		var event map[string]json.RawMessage
-		if err := decoder.Decode(&event); err == io.EOF {
-			break // EOF indicates the stream has ended
-		} else if err != nil {
-			Log.Error(fmt.Sprintf("Error decoding SSE stream: %v", err))
-			return nil, err
-		}
+	for scanner.Scan() {
+		line := scanner.Text()
 
-		// If 'data' key exists, parse the content
-		if rawData, found := event["data"]; found {
+		// SSE events often start with "data: " prefix
+		if strings.HasPrefix(line, "data: ") {
+			// Extract the JSON part after "data: "
+			jsonData := strings.TrimPrefix(line, "data: ")
+
+			// Try to unmarshal the JSON part into your EventResponse struct
 			var eventResp model.EventResponse
-			if err := json.Unmarshal(rawData, &eventResp); err != nil {
+			if err := json.Unmarshal([]byte(jsonData), &eventResp); err != nil {
 				Log.Error(fmt.Sprintf("Error unmarshalling response: %v", err))
 				return nil, err
 			}
 
 			// Log and append response based on event status
 			Log.Info(fmt.Sprintf("Received status: %d, message: %v", eventResp.Payload.Status, eventResp.Payload.Message))
+			runResponses = append(runResponses, eventResp.Payload)
 
 			// Handle based on status
-			switch eventResp.Payload.Status {
-			case 2: // Running
-				Log.Info("Code is being processed.")
-			case 1: // Test case result
-				Log.Info(fmt.Sprintf("Test: %d, Time: %d, Memory: %d", eventResp.Payload.Test, eventResp.Payload.Time, eventResp.Payload.Memory))
-			case 5: // Compile error
-				Log.Error(fmt.Sprintf("Compilation error: %s", eventResp.Payload.CompileError))
-				return nil, fmt.Errorf("compilation error: %s", eventResp.Payload.CompileError)
-			case 9: // Success
+			if eventResp.Payload.Status == 9 { // Success
 				Log.Info("Code execution completed successfully.")
-				runResponses = append(runResponses, model.Payload{
-					Status:  eventResp.Payload.Status,
-					Message: "Code executed correctly",
-				})
-				return runResponses, nil
+				break
 			}
-
-			// Collect each response for further processing
-			runResponses = append(runResponses, eventResp.Payload)
 		}
+	}
+
+	if err := scanner.Err(); err != nil {
+		Log.Error(fmt.Sprintf("Error reading response body: %v", err))
+		return nil, err
 	}
 
 	return runResponses, nil
