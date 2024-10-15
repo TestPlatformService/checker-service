@@ -58,7 +58,7 @@ func sendRunRequest(runReq model.ApiRequest, Log *slog.Logger) ([]model.Payload,
 			}
 
 			// Log and append response based on event status
-			Log.Info(fmt.Sprintf("Received status: %d, message: %v", eventResp.Payload.Status, eventResp.Payload.Message))
+			Log.Info(fmt.Sprintf("Received status: %d", eventResp.Payload.Status))
 
 			// Check for compile error
 			if eventResp.Payload.Status == 5 { // Compile error
@@ -125,7 +125,7 @@ func (h *Handler) Check(c *gin.Context) {
 
 	// Send responses to client via SSE
 	for _, response := range runResp {
-		result := fmt.Sprintf(`{"event":"status","payload":{"status":%d,"message":"%s"}}`, response.Status, response.Message)
+		result := fmt.Sprintf(`{"event":"status","payload":{"status":%d}}`, response.Status)
 		fmt.Fprintf(c.Writer, "id: %s\n", time.Now().Format(time.RFC3339Nano))
 		fmt.Fprintf(c.Writer, "data: %s\n\n", result)
 		c.Writer.(http.Flusher).Flush()

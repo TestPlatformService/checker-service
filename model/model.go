@@ -29,7 +29,6 @@ type RunRequest struct {
 // Payload represents the inner structure of EventResponse
 type Payload struct {
 	Status       int    `json:"status"`
-	Message      string `json:"message"`
 	Test         int    `json:"test,omitempty"`
 	Time         int    `json:"time,omitempty"`
 	Memory       int    `json:"memory,omitempty"`
