@@ -26,9 +26,20 @@ type RunRequest struct {
 	Lang       string `json:"lang"`
 }
 
-type RunResponse struct {
-	Status  string `json:"status"`
-	Message string `json:"message"`
+// Payload represents the inner structure of EventResponse
+type Payload struct {
+	Status       int    `json:"status"`
+	Message      string `json:"message"`
+	Test         int    `json:"test,omitempty"`
+	Time         int    `json:"time,omitempty"`
+	Memory       int    `json:"memory,omitempty"`
+	CompileError string `json:"compile_error,omitempty"`
+}
+
+// EventResponse represents the response structure for an event
+type EventResponse struct {
+	EventId string  `json:"event_id"`
+	Payload Payload `json:"payload"`
 }
 
 type Request struct {
