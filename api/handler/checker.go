@@ -59,6 +59,13 @@ func sendRunRequest(runReq model.ApiRequest, Log *slog.Logger) ([]model.Payload,
 
 			// Log and append response based on event status
 			Log.Info(fmt.Sprintf("Received status: %d, message: %v", eventResp.Payload.Status, eventResp.Payload.Message))
+
+			// Check for compile error
+			if eventResp.Payload.Status == 5 { // Compile error
+				Log.Error(fmt.Sprintf("Compilation error: %s", eventResp.Payload.CompileError))
+				return nil, fmt.Errorf("compilation error: %s", eventResp.Payload.CompileError)
+			}
+
 			runResponses = append(runResponses, eventResp.Payload)
 
 			// Handle based on status
